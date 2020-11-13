@@ -1,0 +1,96 @@
+.btn-primary{
+    padding: 12px 35px;
+    background-color: $pri;
+    border-color: $pri;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    &:hover, &:focus, &:active, &:disabled{
+        background-color: lighten($pri, 10%) !important;
+        border-color: lighten($pri, 10%) !important;
+        outline: none !important;
+    }
+}
+
+.btn-secondary{
+    padding: 12px 35px;
+    background-color: $sec;
+    border-color: $sec;
+    color: $t;
+    font-weight: bold;
+    border-radius: 10px;
+    font-size: 16px;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    &:hover, &:focus, &:active, &:disabled{
+        background-color: lighten($sec, 10%) !important;
+        border-color: lighten($sec, 10%) !important;
+        color: $t !important;
+        outline: none !important;
+    }
+}
+
+.btn-outline-secondary{
+    padding: 12px 20px;
+    background-color: transparent;
+    border-color: $sec;
+    color: $sec;
+    font-weight: 500;
+    border-radius: 6px;
+    font-size: 15px;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    img{
+        margin-left: 7px;
+    }
+    &:hover, &:focus, &:active, &:disabled{
+        background-color: $sec !important;
+        border-color: $pri !important;
+        color: $wt !important;
+        outline: none !important;
+    }
+}
+
+.btn-outline-white{
+    padding: 12px 20px;
+    background-color: rgba($color: $wt, $alpha: 0.15);
+    border-color: $wt;
+    color: $wt;
+    font-weight: 500;
+    border-radius: 6px;
+    font-size: 15px;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    img{
+        margin-left: 7px;
+    }
+    &:hover, &:focus, &:active, &:disabled{
+        background-color: rgba($color: $wt, $alpha: 0.3) !important;
+        border-color: $wt !important;
+        color: $wt !important;
+        outline: none !important;
+    }
+}
+
+.btn-outline-black{
+    padding: 10px 15px;
+    background-color: transparent;
+    border: 3px solid #B3B3B3;
+    color: $bl;
+    font-weight: 500;
+    border-radius: 6px;
+    font-size: 13px;
+    box-shadow: none !important;
+    transition: all 0.3s ease;
+    img{
+        margin-left: 7px;
+    }
+    &:hover, &:focus, &:active, &:disabled{
+        background-color: #B3B3B3 !important;
+        border-color: #B3B3B3 !important;
+        color: $bl !important;
+        outline: none !important;
+    }
+}

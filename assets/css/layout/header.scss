@@ -1,0 +1,62 @@
+header{
+    .navbar-top{
+        background-color: $pri;
+        p{
+            float: left;
+            margin-bottom: 0;
+            color: $wt;
+            font-weight: 500;
+            font-size: 11px;    
+            margin-top: 11px;
+        }
+        .login{
+            float: right;
+            padding: 7px 15px;
+            background-color: $sec;
+            color: $pri;
+            img{
+                display: inline-block;
+                vertical-align: middle;
+                margin-right: 3px;
+            }
+            span{
+                display: inline-block;
+                vertical-align: middle;
+                font-size: 12px;
+                font-weight: 500;
+            }
+        }
+        &:after{
+            content: "";
+            display: table;
+            clear: both;
+        }
+    }
+    .navbar{
+        .navbar-brand{
+            img{
+                width: 220px;
+                @media screen and (max-width: 991px){
+                    width: 150px;
+                }
+            }
+        }
+        .navbar-nav{
+            .nav-item{
+                .nav-link{
+                    font-weight: 500;
+                    font-size: 13px;
+                    color: $t;
+                    padding: 25px 9px;
+                    @media screen and (max-width: 1199px){
+                        padding: 25px 5px;
+                    }
+                    @media screen and (max-width: 991px){
+                        padding: 7px 0px;
+                        text-align: left;
+                    }
+                }
+            }
+        }
+    }
+}

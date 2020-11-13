@@ -1,0 +1,35 @@
+.short-contact{
+  background-color: $sec;
+  padding: 15px 20px;
+  color: $pri;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: fixed;
+  z-index: 5;
+  top: 50%;
+  right: -51px;
+  transform: translateY(-50%) rotate(-90deg);
+  transition: all 0.3s ease;
+  &:hover, &:focus{
+    text-decoration: none;
+    color: $sec;
+    background-color: $pri;
+  }
+}
+
+.white-wrap{
+  padding: 90px 0;
+  background-color: $wt;
+  @media screen and (max-width: 991px){
+    padding: 45px 0;
+  }
+}
+
+.gray-wrap{
+  padding: 90px 0;
+  background-color: #F6F6F6;
+  @media screen and (max-width: 991px){
+    padding: 45px 0;
+  }
+}
