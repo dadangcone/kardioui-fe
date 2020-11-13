@@ -33,6 +33,8 @@ header{
         }
     }
     .navbar{
+        border-bottom: 1px solid #E1E1E1;
+        padding-bottom: 0px;
         .navbar-brand{
             img{
                 width: 220px;
@@ -41,6 +43,9 @@ header{
                 }
             }
         }
+        .nuxt-link-active{
+            border-bottom: 4px solid #3B7543;
+        }
         .navbar-nav{
             .nav-item{
                 .nav-link{
@@ -48,6 +53,7 @@ header{
                     font-size: 13px;
                     color: $t;
                     padding: 25px 9px;
+                    padding-bottom: 25px;
                     @media screen and (max-width: 1199px){
                         padding: 25px 5px;
                     }

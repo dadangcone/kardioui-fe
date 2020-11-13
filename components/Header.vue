@@ -11,7 +11,7 @@
     </div>
     <b-navbar type="light" toggleable="lg">
       <b-container>
-        <b-navbar-brand href="#"><img src="/logo.png" alt=""></b-navbar-brand>
+        <b-navbar-brand href="/"><img src="/logo.png" alt=""></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 

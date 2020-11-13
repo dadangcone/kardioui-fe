@@ -1,0 +1,138 @@
+.nav-page{
+    padding-top: 45px;
+    padding-bottom: 0;
+    text-align: center;
+    @media screen and (max-width: 991px){
+        padding: 30px 0;
+    }
+    @media screen and (max-width: 767px){
+        padding: 15px 0;
+    }
+    a{
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 15px;
+        color: $t;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        @media screen and (max-width: 767px){
+            display: block;
+            margin: 5px 0;
+        }
+        &:hover, &:focus{
+            text-decoration: none;
+            color: $pri;
+        }
+    }
+}
+
+.title-page{
+    &.white-wrap{
+        padding-bottom: 0px;
+    }
+    .image{
+      margin-top: 40px;
+      width: 100%;
+      height: 520px;
+    }
+    h3{
+      color: $pri;
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      @media screen and (max-width: 991px){
+        font-size: 34px;
+      }
+      @media screen and (max-width: 767px){
+        font-size: 30px;
+        margin-bottom: 10px;
+      }
+    }
+    p{
+      font-size: 17px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      color: $bl;
+      opacity: 0.6;
+      @media screen and (max-width: 991px){
+        font-size: 15px;
+      }
+      @media screen and (max-width: 767px){
+        font-size: 14px;
+        margin-bottom: 15px;
+      }
+    
+    }
+  }
+
+  .white-wrap, .gray-wrap{
+      h2{
+        color: $pri;
+        font-size: 40px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+        @media screen and (max-width: 991px){
+          font-size: 34px;
+        }
+        @media screen and (max-width: 767px){
+          font-size: 30px;
+          margin-bottom: 10px;
+        }
+      }
+      p{
+        font-size: 17px;
+        line-height: 30px;
+        opacity: 0.6;
+      }
+  }
+
+  .fasilitas{
+      .image{
+        width: 100%;
+        height: 200px;
+        background-size: cover;
+        margin-bottom: 30px;
+      }
+  }
+    .penelitian-list{
+    background: #fff;
+    border: 1px solid #F2F2F2;
+    border-radius: 6px;
+    padding: 20px;
+    margin-bottom: 25px;
+    .title-penelitian{
+        margin-left: 62px;
+        h3{
+            font-size: 17px;
+            padding-top: 6px;
+        }
+        h6{
+            font-size: 14px;
+            opacity: 0.6;
+        }
+    }
+    
+    .image{
+        width: 48px;
+        height: 48px;
+        background-size: cover;
+        float: left;
+        .size-doc{
+            padding-top: 50px;
+            text-align: center;
+            font-size: 11px;
+        }
+    }
+  }
+  
+.galeri-foto{
+  h2{
+    font-size: 28px;
+    color: #393939;
+    display: inline-block;
+  }
+  .btn-more{
+    float: right;
+    margin: 10px 0 30px 0;
+  }
+}
