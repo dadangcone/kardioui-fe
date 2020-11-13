@@ -145,19 +145,7 @@ export default {
           img: '/galery.png',
           title: '31th Weekend Course on Cardiology (WECOC)',
           desc: 'Acara telah sukses terlaksana.'
-        },
-        {
-          id: 2,
-          img: '/sekilas.png',
-          title: 'World Heart Day, Selamat Hari Jantung Sedunia. ',
-          desc: 'Acara telah sukses terlaksana.'
-        },
-        {
-          id: 3,
-          img: '/galery.png',
-          title: 'Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.',
-          desc: 'Acara telah sukses terlaksana.'
-        },
+        }
       ],
       textSetting: {
         arrows: false,
