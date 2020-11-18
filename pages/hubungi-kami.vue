@@ -32,7 +32,7 @@
           </b-col>
           <b-col md="6">
             <ValidationObserver v-slot="{ handleSubmit }" ref="observer">
-              <form @submit.prevent="handleSubmit()">
+              <form @submit.prevent="handleSubmit(submitKontak)">
                 <b-row>
                   <b-col md="6">
                     <ValidationProvider name="Nama" rules="required" v-slot="{ errors }" class="form-wrap">
@@ -140,7 +140,7 @@ export default {
         formKontak.append('subject', this.kontak.judul)
         formKontak.append('message', this.kontak.pesan)
 
-        await this.$axios.$post(`/contact-us/store`, formKontak)
+        await this.$axios.$post(`/contact-us`, formKontak)
         this.$toast.success('Terimakasih telah menghubungi kami!').goAway(3000);
 
         // reset form

@@ -17,14 +17,14 @@
       <b-container>
         <b-row>
           <b-col md="8" offset-md="2">
-            <h3>Fasilitas</h3>
+            <h3>{{ dataPenelitian.judul }}</h3>
             <b-row>
-              <b-col md="6" v-for="fasil in fasilitases" :key="fasil.id">
-                <div class="image-grid" :style="{ backgroundImage: 'url(' + fasil.img + ')' }"></div>
+              <b-col md="6" v-for="fasil in dataPenelitian.fasilitas_penelitian_image" :key="fasil.id">
+                <div class="image-grid" :style="{ backgroundImage: 'url(' + fasil.url_image + ')' }"></div>
               </b-col>
             </b-row>
 
-            <p>Departemen Kardiologi dan Kedokteran Vaskular FKUI bersama Rumah Sakit Jantung dan Pembuluh Darah Harapan Kita memiliki fasilitas penelitian di Gedung Penelitian dan Pengembangan.</p>
+            <vue-markdown>{{ dataPenelitian.konten }}</vue-markdown>
           </b-col>
         </b-row>
       </b-container>
@@ -46,6 +46,10 @@ export default {
         { hid: 'og:description', name: 'og:description', content: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular' },
       ]
     }
+  },
+  async asyncData({ route, app }) {
+    let tempPenelitian = await app.$axios.$get(`/fasilitas-penelitian`)
+    return { dataPenelitian : tempPenelitian.data.data[0] }
   },
   data() {
     return{
