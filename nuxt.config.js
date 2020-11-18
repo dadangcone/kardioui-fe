@@ -1,6 +1,6 @@
 export default {
   // Target (https://go.nuxtjs.dev/config-target)
-  target: 'static',
+  target: 'server',
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
@@ -19,7 +19,7 @@ export default {
           'sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr',
         crossorigin: 'anonymous',
       },
-      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap' }
+      { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=PT+Sans:wght@400;700&display=swap' }
     ]
   },
 
@@ -39,6 +39,7 @@ export default {
     { src: '~/plugins/vue-plyr', mode: 'client' },
     { src: '~/plugins/vue-slick-carousel.js', mode: 'client' },
     { src: '~/plugins/vue2-google-maps.js', mode: 'client' },
+    { src: '~/plugins/vue-markdown.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

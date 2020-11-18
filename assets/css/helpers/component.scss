@@ -18,6 +18,14 @@
   }
 }
 
+.clearfix{
+  &:after{
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+
 .white-wrap{
   padding: 90px 0;
   background-color: $wt;
@@ -31,5 +39,39 @@
   background-color: #F6F6F6;
   @media screen and (max-width: 991px){
     padding: 45px 0;
+  }
+}
+
+.nav-inner{
+  padding: 25px 0;
+  text-align: center;
+  @media screen and (max-width: 767px){
+    padding: 10px 0;
+  }
+  a{
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    opacity: 0.4;
+    margin: 0 15px;
+    font-weight: 500;
+    color: $bl;
+    transition: all 0.3s ease;
+    @media screen and (max-width: 767px){
+      display: block;
+      margin: 5px 0;
+    }
+    &:hover, &:focus, &.nuxt-link-exact-active{
+      text-decoration: none;
+      opacity: 1;
+    }
+  }
+}
+
+.map{
+  width: 100%;
+  height: 400px;
+  @media screen and (max-width: 767px){
+    height: 300px;
   }
 }

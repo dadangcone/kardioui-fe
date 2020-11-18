@@ -68,7 +68,7 @@
         <b-row>
           <b-col md="12">
             <h2>Berita Terbaru</h2>            
-            <b-link to="" class="btn btn-outline-black btn-more">Selengkapnya <img src="/angle-right-black.png" alt=""></b-link>
+            <b-link to="/berita" class="btn btn-outline-black btn-more">Selengkapnya <img src="/angle-right-black.png" alt=""></b-link>
           </b-col>
           <b-col md="4" v-for="news in news" :key="news.id">
             <b-link class="news-item">
@@ -89,24 +89,28 @@
               <h5>Galeri foto</h5>
               <b-link to="" class="btn btn-outline-secondary">Lihat Lainnya <img src="/angle-right-yellow.png" alt=""></b-link>
             </div>
-            <VueSlickCarousel v-bind="textSetting" ref="textList" :asNavFor="$refs.gallery" :focusOnSelect="true">
-              <div class="gallery-text" 
-                v-for="text in gallerys" 
-                :key="text.id" 
-              >
-                <h3>{{ text.title }}</h3>
-                <h6>{{ text.desc }}</h6>
-              </div>
-            </VueSlickCarousel>
+            <client-only>
+              <VueSlickCarousel v-bind="textSetting" ref="textList" :asNavFor="$refs.gallery" :focusOnSelect="true">
+                <div class="gallery-text" 
+                  v-for="text in dataGallery" 
+                  :key="text.id" 
+                >
+                  <h3>{{ text.judul }}</h3>
+                  <h6>{{ text.publish }}</h6>
+                </div>
+              </VueSlickCarousel>
+            </client-only>
           </b-col>
           <b-col md="6">
-            <VueSlickCarousel v-bind="imageSetting" ref="gallery" :asNavFor="$refs.textList" :focusOnSelect="true">
-              <div class="gallery-image" 
-                v-for="image in gallerys" 
-                :key="image.id" 
-                :focusOnSelect="true" :style="{ backgroundImage: 'url(' + image.img + ')'}"
-              ></div>
-            </VueSlickCarousel>
+            <client-only>
+              <VueSlickCarousel v-bind="imageSetting" ref="gallery" :asNavFor="$refs.textList" :focusOnSelect="true">
+                <div class="gallery-image" 
+                  v-for="image in dataGallery" 
+                  :key="image.id" 
+                  :focusOnSelect="true" :style="{ backgroundImage: 'url(' + image.galeri_foto_detail[0].url_foto + ')'}"
+                ></div>
+              </VueSlickCarousel>
+            </client-only>
           </b-col>
         </b-row>
       </b-container>
@@ -117,6 +121,22 @@
 <script>
 
 export default {
+  head() {
+    return {
+      title: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI',
+      meta: [
+        { hid: 'title', name: 'title', content: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI' },
+        { hid: 'og:title', name: 'og:title', content: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI' },
+        { hid: 'keywords', name: 'keywords', content: 'Yayasan, Universitas Indonesia, Kardiologi, Indonesia, Vaskular, Departemen Kardiologi, Kedokteran Vaskular, Departemen Kardiologi dan Kedokteran Vaskular FK UI' },
+        { hid: 'description', name: 'description', content: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular' },
+        { hid: 'og:description', name: 'og:description', content: 'Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular' },
+      ]
+    }
+  },
+  async asyncData({ route, app }) {
+    let tempGallery = await app.$axios.$get(`/galeri-foto`)
+    return { dataGallery : tempGallery.data.data }
+  },
   data() {
     return{
       news: [
@@ -145,7 +165,19 @@ export default {
           img: '/galery.png',
           title: '31th Weekend Course on Cardiology (WECOC)',
           desc: 'Acara telah sukses terlaksana.'
-        }
+        },
+        {
+          id: 2,
+          img: '/sekilas.png',
+          title: 'World Heart Day, Selamat Hari Jantung Sedunia. ',
+          desc: 'Acara telah sukses terlaksana.'
+        },
+        {
+          id: 3,
+          img: '/galery.png',
+          title: 'Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.',
+          desc: 'Acara telah sukses terlaksana.'
+        },
       ],
       textSetting: {
         arrows: false,

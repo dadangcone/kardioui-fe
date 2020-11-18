@@ -1,138 +1,404 @@
-.nav-page{
-    padding-top: 45px;
-    padding-bottom: 0;
+.head-inner{
+  padding-top: 60px;
+  @media screen and (max-width: 991px){
+    padding-top: 30px;
+  }
+  h3{
+    font-size: 40px;
+    font-weight: 500;
+    color: $pri;
+    margin-bottom: 60px;
     text-align: center;
     @media screen and (max-width: 991px){
-        padding: 30px 0;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+  }
+  .hero-image{
+    width: 100%;
+    height: 530px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 20px;
+    @media screen and (max-width: 991px){
+      height: 360px;
+      margin-bottom: 10px;
     }
     @media screen and (max-width: 767px){
-        padding: 15px 0;
+      height: 250px;
     }
-    a{
-        display: inline-block;
-        vertical-align: middle;
-        margin: 0 15px;
-        color: $t;
-        font-weight: 600;
-        transition: all 0.3s ease;
-        @media screen and (max-width: 767px){
-            display: block;
-            margin: 5px 0;
-        }
-        &:hover, &:focus{
-            text-decoration: none;
-            color: $pri;
-        }
-    }
+  }
 }
 
-.title-page{
-    &.white-wrap{
-        padding-bottom: 0px;
+.content-inner{
+  padding: 20px 0 60px 0;
+  &.form-list{
+    padding-top: 70px;
+    .sort select{
+      width: 225px;
     }
-    .image{
-      margin-top: 40px;
+  }
+  @media screen and (max-width: 991px){
+    padding: 10px 0 30px 0;
+  }
+  h3{
+    font-size: 40px;
+    color: $pri;
+    font-weight: 500;
+    margin-bottom: 15px;
+    @media screen and (max-width: 991px){
+      font-size: 30px;
+    }
+    &.left{
+      float: left;
+    }
+  }
+  .search-list{
+    float: right;
+    font-size: 16px;
+    width: 280px;
+    padding: 12px 12px 12px 42px;
+    border-radius: 8px;
+    border: 1px solid #F2F2F2;
+    background-image: url('/search.png');
+    background-repeat: no-repeat;
+    background-position: left 12px center;
+    @media screen and (max-width: 767px){
+      float: none;
       width: 100%;
-      height: 520px;
-    }
-    h3{
-      color: $pri;
-      font-size: 44px;
-      line-height: 1.2;
       margin-bottom: 20px;
-      @media screen and (max-width: 991px){
-        font-size: 34px;
-      }
-      @media screen and (max-width: 767px){
-        font-size: 30px;
-        margin-bottom: 10px;
+    }
+    &.left{
+      float: left;
+      margin-bottom: 20px;
+      font-family: $r;
+    }
+  }
+  .sort{
+    float: right;
+    @media screen and (max-width: 767px){
+      float: left;
+      margin-bottom: 20px;
+    }
+    label{
+      display: inline-block;
+      visibility: middle;
+      color: rgba($color: $bl, $alpha: 0.6);
+      margin-right: 10px;
+      font-family: $r;
+    }
+    select{
+      width: 104px;
+      padding: 12px 35px 12px 15px;
+      border: 1px solid #F2F2F2;
+      font-size: 16px;
+      border-radius: 8px;
+      background-image: url('/angle-down-black.png');
+      background-position: right 10px center;
+      height: auto;
+      background-size: auto;
+    }
+  }
+  p{
+    font-size: 17px;
+    line-height: 1.6;
+    font-family: $r;
+    margin-bottom: 30px;
+    color: rgba($color: $bl, $alpha: 0.6);
+    @media screen and (max-width: 991px){
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+    a{
+      color: $pri;
+      transition: all 0.3s ease;
+      &:hover, &:focus{
+        text-decoration: none;
+        color: $sec;
       }
     }
-    p{
+  }
+  ol{
+    font-family: $r;
+    padding-left: 20px;
+    li{
+      margin-bottom: 5px;
       font-size: 17px;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      font-family: $r;
+      color: rgba($color: $bl, $alpha: 0.6);
+      @media screen and (max-width: 991px){
+        font-size: 14px;
+      }
+    }
+  }
+  .image-grid{
+    width: 100%;
+    height: 180px;
+    background-size: cover;
+    background-position: center center;
+    margin-bottom: 20px;
+    @media screen and (max-width: 991px){
+      height: 150px;
+    }
+  }
+  .item-list{
+    display: block;
+    border-radius: 8px;
+    border: 1px solid #F2F2F2;
+    padding: 20px 20px 20px 96px;
+    position: relative;
+    margin-bottom: 20px;
+    @media screen and (max-width: 767px){
+      padding: 15px 15px 15px 75px;
+      margin-bottom: 15px;
+    }
+    .icon{
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transform: translateY(-50%);
+      border-radius: 50%;
+      width: 54px;
+      height: 54px;
+      background-color: rgba($color: $pri, $alpha: 0.1);
+      @media screen and (max-width: 767px){
+        left: 10px;
+      }
+      &.desc{
+        transform: translateY(-70%);
+      }
+      &.blue{
+        background-color: rgba($color: #3185E8, $alpha: 0.1);
+      }
+    }
+    h5{
+      font-size: 18px;
+      font-family: $r;
+      margin-bottom: 10px;
+      height: 22px;
+      overflow: hidden;
+      color: $bl;
+      @media screen and (max-width: 767px){
+        font-size: 16px;
+        margin-bottom: 5px;
+        height: 22px;
+      }
+    }
+    h6{
+      font-size: 14px;
       color: $bl;
       opacity: 0.6;
-      @media screen and (max-width: 991px){
-        font-size: 15px;
-      }
+      margin-bottom: 0;
+      font-family: $r;
+      font-weight: normal;
       @media screen and (max-width: 767px){
-        font-size: 14px;
-        margin-bottom: 15px;
+        font-size: 13px;
       }
-    
+      &.desc{
+        line-height: 1.5;
+        height: 42px;
+        overflow: hidden;
+      }
+    }
+    .size{
+      position: absolute;
+      bottom: 20px;
+      left: 30px;
+      font-size: 12px;
+      font-family: $r;
+      color: rgba($color: $bl, $alpha: 0.6);
+    }
+    &:hover, &:focus{
+      text-decoration: none;
     }
   }
 
-  .white-wrap, .gray-wrap{
-      h2{
-        color: $pri;
-        font-size: 40px;
-        line-height: 1.2;
-        margin-bottom: 20px;
-        @media screen and (max-width: 991px){
-          font-size: 34px;
-        }
-        @media screen and (max-width: 767px){
-          font-size: 30px;
-          margin-bottom: 10px;
-        }
-      }
-      p{
-        font-size: 17px;
-        line-height: 30px;
-        opacity: 0.6;
-      }
+  pre{
+    white-space: normal;
   }
 
-  .fasilitas{
-      .image{
-        width: 100%;
-        height: 200px;
-        background-size: cover;
-        margin-bottom: 30px;
+  table{
+    tbody{
+      tr{
+        td{
+          border: 1px solid #333;
+        }
       }
-  }
-    .penelitian-list{
-    background: #fff;
-    border: 1px solid #F2F2F2;
-    border-radius: 6px;
-    padding: 20px;
-    margin-bottom: 25px;
-    .title-penelitian{
-        margin-left: 62px;
-        h3{
-            font-size: 17px;
-            padding-top: 6px;
-        }
-        h6{
-            font-size: 14px;
-            opacity: 0.6;
-        }
-    }
-    
-    .image{
-        width: 48px;
-        height: 48px;
-        background-size: cover;
-        float: left;
-        .size-doc{
-            padding-top: 50px;
-            text-align: center;
-            font-size: 11px;
-        }
     }
   }
-  
-.galeri-foto{
+}
+
+.staf-wrap{
+  background: #fff;
+  border: 1px solid #F2F2F2;
+  padding: 30px 25px;
+  border-radius: 8px;
+  h3{
+    font-size: 22px;
+  }
+  .staf-item{
+    ul{
+      list-style: none;
+      padding: 0;
+      li{
+        padding-bottom: 6px;
+      }
+    }
+  }
+}
+.news{
   h2{
-    font-size: 28px;
-    color: #393939;
-    display: inline-block;
+    font-size: 44px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    float: left;
+    color: $pri;
+    @media screen and (max-width: 991px){
+      font-size: 34px;
+    }
+    @media screen and (max-width: 767px){
+      font-size: 30px;
+      float: none;
+      display: block;
+      margin-bottom: 5px;
+    }
   }
   .btn-more{
     float: right;
     margin: 10px 0 30px 0;
+    @media screen and (max-width: 767px){
+      float: none;
+    }
+  }
+  .news-item{
+    display: block;
+    .image{
+      border-radius: 6px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 100%;
+      height: 180px;
+      margin-bottom: 20px;
+      @media screen and (max-width: 767px){
+        margin-bottom: 10px;
+      }
+    }
+    h5{
+      height: 55px;
+      overflow: hidden;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 0;
+      line-height: 1.4;
+      color: $bl;
+      transition: all 0.3s ease;
+      @media screen and (max-width: 991px){
+        font-size: 16px;
+        height: 50px;
+      }
+    }
+    h6{
+      font-size: 14px;
+      opacity: 0.4;
+      color: $bl;
+      text-transform: uppercase;
+      margin: 0;
+      font-family: $r;
+      @media screen and (max-width: 767px){
+        margin: 0 0 20px 0;
+      }
+    }
+    &:hover, &:focus{
+      text-decoration: none;
+      h5{
+        color: $pri;
+      }
+    }
+  }
+}
+
+.galeri-foto{
+  h2{
+    font-size: 33px;
+    font-weight: 500;
+    margin-bottom: 40px;
+    float: left;
+    color: $pri;
+    @media screen and (max-width: 991px){
+      font-size: 34px;
+    }
+    @media screen and (max-width: 767px){
+      font-size: 30px;
+      float: none;
+      display: block;
+      margin-bottom: 5px;
+    }
+  }
+  .btn-more{
+    float: right;
+    margin: 10px 0 30px 0;
+    @media screen and (max-width: 767px){
+      float: none;
+    }
+  }
+  .galeri-item{
+    display: block;
+    .small-tips{
+      background: #FADA4F;
+      padding: 7px 10px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 11px;
+      position: absolute;
+      right: 22px;
+      top: 6px;
+    }
+    .image{
+      border-radius: 6px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center center;
+      width: 100%;
+      height: 180px;
+      margin-bottom: 20px;
+      @media screen and (max-width: 767px){
+        margin-bottom: 10px;
+      }
+    }
+    h5{
+      height: 55px;
+      overflow: hidden;
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 0;
+      line-height: 1.4;
+      color: $bl;
+      transition: all 0.3s ease;
+      @media screen and (max-width: 991px){
+        font-size: 16px;
+        height: 50px;
+      }
+    }
+    h6{
+      font-size: 14px;
+      opacity: 0.4;
+      color: $bl;
+      text-transform: uppercase;
+      margin: 0;
+      font-family: $r;
+      @media screen and (max-width: 767px){
+        margin: 0 0 20px 0;
+      }
+    }
+    &:hover, &:focus{
+      text-decoration: none;
+      h5{
+        color: $pri;
+      }
+    }
   }
 }

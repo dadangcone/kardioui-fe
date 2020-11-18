@@ -11,7 +11,7 @@
     </div>
     <b-navbar type="light" toggleable="lg">
       <b-container>
-        <b-navbar-brand href="/"><img src="/logo.png" alt=""></b-navbar-brand>
+        <b-navbar-brand to="/"><img src="/logo.png" alt=""></b-navbar-brand>
 
         <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
@@ -22,7 +22,7 @@
             <b-nav-item to="/tentang">Tentang Kami</b-nav-item>
             <b-nav-item to="/penerimaan">Penerimaan</b-nav-item>
             <b-nav-item to="/penelitian">Penelitian</b-nav-item>
-            <b-nav-item to="/pengabdian">Pengabdian Masyarakat</b-nav-item>
+            <b-nav-item to="/pengabdian-masyarakat">Pengabdian Masyarakat</b-nav-item>
             <b-nav-item to="/galeri">Galeri</b-nav-item>
             <b-nav-item to="/publikasi">Publikasi</b-nav-item>
             <b-nav-item to="/berita">Berita & Agenda</b-nav-item>

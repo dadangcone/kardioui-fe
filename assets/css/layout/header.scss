@@ -1,4 +1,5 @@
 header{
+    border-bottom: 1px solid #E1E1E1;
     .navbar-top{
         background-color: $pri;
         p{
@@ -33,18 +34,16 @@ header{
         }
     }
     .navbar{
-        border-bottom: 1px solid #E1E1E1;
-        padding-bottom: 0px;
         .navbar-brand{
             img{
                 width: 220px;
+                @media screen and (max-width: 1199px){
+                    width: 200px;
+                }
                 @media screen and (max-width: 991px){
-                    width: 150px;
+                    width: 170px;
                 }
             }
-        }
-        .nuxt-link-active{
-            border-bottom: 4px solid #3B7543;
         }
         .navbar-nav{
             .nav-item{
@@ -53,13 +52,28 @@ header{
                     font-size: 13px;
                     color: $t;
                     padding: 25px 9px;
-                    padding-bottom: 25px;
+                    position: relative;
                     @media screen and (max-width: 1199px){
                         padding: 25px 5px;
                     }
                     @media screen and (max-width: 991px){
                         padding: 7px 0px;
                         text-align: left;
+                    }
+                    &:before{
+                        content: "";
+                        position: absolute;
+                        height: 5px;
+                        left: 9px;
+                        right: 9px;
+                        bottom: -8px;
+                        background-color: transparent;
+                        transition: all 0.3s ease;
+                    }
+                    &.nuxt-link-exact-active, &.nuxt-link-active{
+                        &:before{
+                            background-color: $pri;
+                        }
                     }
                 }
             }
