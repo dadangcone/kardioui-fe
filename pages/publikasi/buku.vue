@@ -18,8 +18,8 @@
         <b-row>
           <b-col md="10" offset-md="1">
             <h3>Buku</h3>
-            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchList()" placeholder="Cari Jurnal"></b-form-input>
-            <div class="sort">
+            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchBuku()" placeholder="Cari Buku"></b-form-input>
+            <div class="sort d-none">
               <label for="">Urut berdasarkan</label>
               <b-form-select v-model="sort">
                 <option value="desc">Z- A</option>
@@ -28,23 +28,23 @@
             </div>
             <div class="clearfix"></div>
             <b-row>
-              <b-col md="6" v-for="item in cutPenelitian" :key="item.id">
+              <b-col md="6" v-for="item in dataBuku" :key="item.id">
                 <b-link to="" class="item-list">
-                  <div :class="['icon', 'desc', {'blue': item.icon === '/doc.png'}]">
-                    <img :src="item.icon" alt="">
+                  <div :class="['icon', 'desc']">
+                    <img src="/pdf.png" alt="">
                   </div>
 
-                  <h5>{{ item.title }}</h5>
-                  <h6 class="desc">{{ item.desc }}</h6>
-                  <span class="size">{{ item.size }}</span>
+                  <h5>{{ item.judul }}</h5>
+                  <h6 class="desc">{{ item.deskripsi }}</h6>
+                  <span class="size d-none">{{ item.created_at | moment("DD/MM/YYYY") }}</span>
                 </b-link>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-link @click="loadMore" 
-                  class="btn btn-outline-black d-inline-block mx-auto"
-                  v-if="this.showPenelitian.length > 4 && this.show < this.showPenelitian.length"
+                <b-link @click="loadBuku()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
                 >
                   Tampilkan lebih banyak
                   <img src="/angle-down-black.png" alt="">
@@ -76,10 +76,11 @@ export default {
   },
   data() {
     return{
-      showPenelitian: [],
-      show: 6,
-      search: '',
-      sort: 'asc',
+      sort: "",
+      search: "",
+      current_page: 1,
+      last_page: 0,
+      dataBuku: [],
       penelitians: [
         { 
           id: 1, 
@@ -197,22 +198,35 @@ export default {
     }
   },
   mounted() {
-    this.showPenelitian = this.penelitians
+    this.getBuku()
   },
   computed: {
-    cutPenelitian(){
-      return this.showPenelitian.slice(0, this.show)
-    },
+    compare(){
+      return this.current_page >= this.last_page
+    }
   },
   methods: {
-    loadMore(){
-      this.show += 4
-    },
-    searchList(){
-      let tempSearch = this.penelitians.filter( obj => obj.title.toLowerCase().includes(this.search.toLowerCase()))
+    async getBuku() {
+      let tempBuku = await this.$axios.$get(`/buku?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
 
-      this.showPenelitian = tempSearch
-    }
+      this.dataBuku.push.apply(this.dataBuku, tempBuku.data.data)
+      this.last_page = tempBuku.data.last_page
+    },
+    async loadBuku() {
+      this.current_page += 1
+      let tempBuku = await this.$axios.$get(`/buku?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataBuku.push.apply(this.dataBuku, tempBuku.data.data)
+      this.last_page = tempBuku.data.last_page
+    },
+    async searchBuku() {
+      this.dataBuku = []
+      this.current_page = 1
+      let tempBuku = await this.$axios.$get(`/buku?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataBuku.push.apply(this.dataBuku, tempBuku.data.data)
+      this.last_page = tempBuku.data.last_page
+    },
   }
 }
 </script>

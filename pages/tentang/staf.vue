@@ -20,8 +20,7 @@
       <b-container>
         <b-row>
           <b-col md="8" offset-md="2">
-            <h3>Staf Pengajar</h3>
-            <p>Comming Soon</p>
+            <h3 class="text-center">Staf Pengajar</h3>
           </b-col>
         </b-row>
       </b-container>
@@ -32,10 +31,12 @@
           <b-col md="12">
             <b-form-input
               type="search"
-              class="search-list left"
-              placeholder="Cari staf pengajar"
+              class="search-list left big"
+              v-model="search"
+              placeholder="Cari staf pengajar dan bidangnya"
+              v-on:keyup.enter="searchStaff"
             ></b-form-input>
-            <div class="sort">
+            <div class="sort d-none">
               <label for="">Filter berdasarkan</label>
               <b-form-select v-model="sort">
                 <option>Semua Divisi</option>
@@ -47,40 +48,21 @@
             </div>
             <div class="clearfix"></div>
             <b-row>
-              <b-col md="6">
+              <b-col md="6" v-for="data in dataStaff" :key="data.id">
                 <div class="staf-wrap">
-                  <h3>Kardiologi Klinik</h3>
-                  <div class="staf-item">
-                    <ul>
-                      <li>Prof. Dr. dr. Bambang Budi Siswanto, SpJP(K)</li>
-                      <li>Dr. dr. Barita S. Sitompul, SpJP(K)</li>
-                      <li>dr. Dian Yaniarti Hasanah, Sp.JP</li>
-                      <li>dr. Hadi Purnomo, Sp.JP(K)</li>
-                      <li>dr. Hari Sakti Mulyawan, PhD, SpJP</li>
-                      <li>dr. Jetty RH. Sedyawan, SpJP(K)</li>
-                     
-                    </ul>
-                  </div>
+                  <h3>{{ data.nama_pengajar }}</h3>
+                  <h6>{{ data.divisi }}</h6>
                 </div>
               </b-col>
-              <b-col md="6">
-                <div class="staf-wrap">
-                  <h3>Kardiologi Klinik</h3>
-                  <div class="staf-item">
-                    <ul>
-                      <li>Prof. Dr. dr. Bambang Budi Siswanto, SpJP(K)</li>
-                      <li>Dr. dr. Barita S. Sitompul, SpJP(K)</li>
-                      <li>dr. Dian Yaniarti Hasanah, Sp.JP</li>
-                      <li>dr. Hadi Purnomo, Sp.JP(K)</li>
-                      <li>dr. Hari Sakti Mulyawan, PhD, SpJP</li>
-                      <li>dr. Jetty RH. Sedyawan, SpJP(K)</li>
-                      <li>dr. Nani Hersunarti, SpJP(K)</li>
-                      <li>dr. Rarsari Soerarso, SpJP(K)</li>
-                    </ul>
-                  </div>
-                </div>
+              <b-col md="12" class="text-center">
+                <b-link @click="loadStaff()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
+                >
+                  Tampilkan lebih banyak
+                  <img src="/angle-down-black.png" alt="">
+                </b-link>
               </b-col>
-             
             </b-row>
           </b-col>
         </b-row>
@@ -130,9 +112,44 @@ export default {
     };
   },
   data() {
-    return {};
+    return {
+      sort: "",
+      search: "",
+      current_page: 1,
+      last_page: 0,
+      dataStaff: [],
+    };
   },
-  mounted() {},
-  methods: {},
+  mounted() {
+    this.getStaff()
+  },
+  computed: {
+    compare(){
+      return this.current_page >= this.last_page
+    }
+  },
+  methods: {
+    async getStaff() {
+      let tempStaff = await this.$axios.$get(`/staff-pengajar?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataStaff.push.apply(this.dataStaff, tempStaff.data.data)
+      this.last_page = tempStaff.data.last_page
+    },
+    async loadStaff() {
+      this.current_page += 1
+      let tempStaff = await this.$axios.$get(`/staff-pengajar?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataStaff.push.apply(this.dataStaff, tempStaff.data.data)
+      this.last_page = tempStaff.data.last_page
+    },
+    async searchStaff() {
+      this.dataStaff = []
+      this.current_page = 1
+      let tempStaff = await this.$axios.$get(`/staff-pengajar?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataStaff.push.apply(this.dataStaff, tempStaff.data.data)
+      this.last_page = tempStaff.data.last_page
+    },
+  },
 };
 </script>

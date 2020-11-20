@@ -18,8 +18,8 @@
         <b-row>
           <b-col md="10" offset-md="1">
             <h3>Jurnal</h3>
-            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchList()" placeholder="Cari Jurnal"></b-form-input>
-            <div class="sort">
+            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchJurnal()" placeholder="Cari Jurnal"></b-form-input>
+            <div class="sort d-none">
               <label for="">Urut berdasarkan</label>
               <b-form-select v-model="sort">
                 <option value="desc">Z- A</option>
@@ -28,23 +28,23 @@
             </div>
             <div class="clearfix"></div>
             <b-row>
-              <b-col md="6" v-for="item in cutPenelitian" :key="item.id">
+              <b-col md="6" v-for="item in dataJurnal" :key="item.id">
                 <b-link to="" class="item-list">
-                  <div :class="['icon', 'desc', {'blue': item.icon === '/doc.png'}]">
-                    <img :src="item.icon" alt="">
+                  <div :class="['icon', 'desc']">
+                    <img src="/pdf.png" alt="">
                   </div>
 
-                  <h5>{{ item.title }}</h5>
-                  <h6 class="desc">{{ item.desc }}</h6>
-                  <span class="size">{{ item.size }}</span>
+                  <h5>{{ item.judul }}</h5>
+                  <h6 class="desc">{{ item.peneliti }}</h6>
+                  <span class="size d-none">{{ item.peneliti }}</span>
                 </b-link>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-link @click="loadMore" 
-                  class="btn btn-outline-black d-inline-block mx-auto"
-                  v-if="this.showPenelitian.length > 4 && this.show < this.showPenelitian.length"
+                <b-link @click="loadJurnal()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
                 >
                   Tampilkan lebih banyak
                   <img src="/angle-down-black.png" alt="">
@@ -76,10 +76,11 @@ export default {
   },
   data() {
     return{
-      showPenelitian: [],
-      show: 6,
-      search: '',
-      sort: 'asc',
+      sort: "",
+      search: "",
+      current_page: 1,
+      last_page: 0,
+      dataJurnal: [],
       penelitians: [
         { 
           id: 1, 
@@ -197,22 +198,35 @@ export default {
     }
   },
   mounted() {
-    this.showPenelitian = this.penelitians
+    this.getJurnal()
   },
   computed: {
-    cutPenelitian(){
-      return this.showPenelitian.slice(0, this.show)
-    },
+    compare(){
+      return this.current_page >= this.last_page
+    }
   },
   methods: {
-    loadMore(){
-      this.show += 4
-    },
-    searchList(){
-      let tempSearch = this.penelitians.filter( obj => obj.title.toLowerCase().includes(this.search.toLowerCase()))
+    async getJurnal() {
+      let tempJurnal = await this.$axios.$get(`/jurnal?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
 
-      this.showPenelitian = tempSearch
-    }
+      this.dataJurnal.push.apply(this.dataJurnal, tempJurnal.data.data)
+      this.last_page = tempJurnal.data.last_page
+    },
+    async loadJurnal() {
+      this.current_page += 1
+      let tempJurnal = await this.$axios.$get(`/jurnal?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataJurnal.push.apply(this.dataJurnal, tempJurnal.data.data)
+      this.last_page = tempJurnal.data.last_page
+    },
+    async searchJurnal() {
+      this.dataJurnal = []
+      this.current_page = 1
+      let tempJurnal = await this.$axios.$get(`/jurnal?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataJurnal.push.apply(this.dataJurnal, tempJurnal.data.data)
+      this.last_page = tempJurnal.data.last_page
+    },
   }
 }
 </script>

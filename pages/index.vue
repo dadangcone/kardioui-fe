@@ -6,7 +6,7 @@
           <b-col md="7">
             <h2>Departemen Kardiologi & Kedokteran Vaskular FK UI</h2>
             <p>Departemen Kardiologi dan Kedokteran Vaskular  menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular</p>
-            <b-link to="" class="btn btn-outline-white">Cari tahu tentang kami <img src="/angle-right.png" alt=""></b-link>
+            <b-link to="/tentang" class="btn btn-outline-white">Cari tahu tentang kami <img src="/angle-right.png" alt=""></b-link>
           </b-col>
         </b-row>
       </b-container>
@@ -15,31 +15,13 @@
     <div class="event-grid">
       <b-container>
         <b-row>
-          <b-col md="4">
+          <b-col md="4" v-for="data in dataAgenda" :key="data.id">
             <div class="event-item">
               <div class="date">
-                <h3>10</h3>
-                <h6>NOV</h6>
+                <h3>{{ data.created_at | moment("DD") }}</h3>
+                <h6>{{ data.created_at | moment("MMM") }}</h6>
               </div>
-              <p>Acara Perayaan Ulang Tahun Departemen Kardiologi dan Kedokteran Vaskular FKUI</p>
-            </div>
-          </b-col>
-          <b-col md="4">
-            <div class="event-item">
-              <div class="date">
-                <h3>13</h3>
-                <h6>NOV</h6>
-              </div>
-              <p>Webinar CardiacAuscultation and Heart Sound</p>
-            </div>
-          </b-col>
-          <b-col md="4">
-            <div class="event-item">
-              <div class="date">
-                <h3>20</h3>
-                <h6>NOV</h6>
-              </div>
-              <p>Webinar CardiacAuscultation and Heart Sound</p>
+              <p>{{ data.judul }}</p>
             </div>
           </b-col>
         </b-row>
@@ -70,11 +52,11 @@
             <h2>Berita Terbaru</h2>            
             <b-link to="/berita" class="btn btn-outline-black btn-more">Selengkapnya <img src="/angle-right-black.png" alt=""></b-link>
           </b-col>
-          <b-col md="4" v-for="news in news" :key="news.id">
+          <b-col md="4" v-for="news in dataBerita" :key="news.id">
             <b-link class="news-item">
-              <div class="image" :style="{ backgroundImage: 'url(' + news.img + ')' }"></div>
-              <h5>{{ news.title }}</h5>
-              <h6>{{ news.date }}</h6>
+              <div class="image" :style="{ backgroundImage: 'url(' + news.thumbnail + ')' }"></div>
+              <h5>{{ news.judul }}</h5>
+              <h6>{{ news.created_at | moment('DD MMMM YYYY') }}</h6>
             </b-link>
           </b-col>
         </b-row>
@@ -135,7 +117,13 @@ export default {
   },
   async asyncData({ route, app }) {
     let tempGallery = await app.$axios.$get(`/galeri-foto`)
-    return { dataGallery : tempGallery.data.data }
+    let tempAgenda = await app.$axios.$get(`/agenda`)
+    let tempBerita = await app.$axios.$get(`/berita`)
+    return { 
+      dataGallery : tempGallery.data.data,
+      dataAgenda : tempAgenda.data.data.slice(0, 3),
+      dataBerita : tempBerita.data.data.slice(0, 3),
+    }
   },
   data() {
     return{

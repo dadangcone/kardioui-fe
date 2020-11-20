@@ -18,8 +18,8 @@
         <b-row>
           <b-col md="10" offset-md="1">
             <h3>Poster</h3>
-            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchList()" placeholder="Cari Jurnal"></b-form-input>
-            <div class="sort">
+            <b-form-input type="search" class="search-list left" v-model="search" v-on:keyup.enter="searchPoster()" placeholder="Cari Poster"></b-form-input>
+            <div class="sort d-none">
               <label for="">Urut berdasarkan</label>
               <b-form-select v-model="sort">
                 <option value="desc">Z- A</option>
@@ -28,23 +28,23 @@
             </div>
             <div class="clearfix"></div>
             <b-row>
-              <b-col md="6" v-for="item in cutPenelitian" :key="item.id">
-                <b-link to="" class="item-list">
-                  <div :class="['icon', 'desc', {'blue': item.icon === '/doc.png'}]">
-                    <img :src="item.icon" alt="">
+              <b-col md="6" v-for="item in dataPoster" :key="item.id">
+                <b-link :href="item.link_file_poster" target="_blank" class="item-list">
+                  <div :class="['icon', 'desc']">
+                    <img src="/pdf.png" alt="">
                   </div>
 
-                  <h5>{{ item.title }}</h5>
-                  <h6 class="desc">{{ item.desc }}</h6>
-                  <span class="size">{{ item.size }}</span>
+                  <h5>{{ item.judul_poster }}</h5>
+                  <h6 class="desc">{{ item.nama_peneliti }}</h6>
+                  <span class="size d-none">{{ item.created_at | moment("DD/MM/YYYY") }}</span>
                 </b-link>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-link @click="loadMore" 
-                  class="btn btn-outline-black d-inline-block mx-auto"
-                  v-if="this.showPenelitian.length > 4 && this.show < this.showPenelitian.length"
+                <b-link @click="loadPoster()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
                 >
                   Tampilkan lebih banyak
                   <img src="/angle-down-black.png" alt="">
@@ -76,10 +76,11 @@ export default {
   },
   data() {
     return{
-      showPenelitian: [],
-      show: 6,
-      search: '',
-      sort: 'asc',
+      sort: "",
+      search: "",
+      current_page: 1,
+      last_page: 0,
+      dataPoster: [],
       penelitians: [
         { 
           id: 1, 
@@ -197,22 +198,35 @@ export default {
     }
   },
   mounted() {
-    this.showPenelitian = this.penelitians
+    this.getPoster()
   },
   computed: {
-    cutPenelitian(){
-      return this.showPenelitian.slice(0, this.show)
-    },
+    compare(){
+      return this.current_page >= this.last_page
+    }
   },
   methods: {
-    loadMore(){
-      this.show += 4
-    },
-    searchList(){
-      let tempSearch = this.penelitians.filter( obj => obj.title.toLowerCase().includes(this.search.toLowerCase()))
+    async getPoster() {
+      let tempPoster = await this.$axios.$get(`/poster?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
 
-      this.showPenelitian = tempSearch
-    }
+      this.dataPoster.push.apply(this.dataPoster, tempPoster.data.data)
+      this.last_page = tempPoster.data.last_page
+    },
+    async loadPoster() {
+      this.current_page += 1
+      let tempPoster = await this.$axios.$get(`/poster?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataPoster.push.apply(this.dataPoster, tempPoster.data.data)
+      this.last_page = tempPoster.data.last_page
+    },
+    async searchPoster() {
+      this.dataPoster = []
+      this.current_page = 1
+      let tempPoster = await this.$axios.$get(`/poster?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataPoster.push.apply(this.dataPoster, tempPoster.data.data)
+      this.last_page = tempPoster.data.last_page
+    },
   }
 }
 </script>

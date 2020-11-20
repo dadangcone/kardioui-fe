@@ -18,24 +18,24 @@
         <b-row>
           <b-col md="12">
             <h3 class="left">Daftar Penelitian</h3>
-            <b-form-input type="search" class="search-list" v-model="search" v-on:keyup.enter="searchList()" placeholder="Cari penelitian"></b-form-input>
+            <b-form-input type="search" class="search-list" v-model="search" v-on:keyup.enter="searchDP()" placeholder="Cari penelitian"></b-form-input>
             <div class="clearfix"></div>
             <b-row>
-              <b-col md="6" v-for="item in cutPenelitian" :key="item.id">
+              <b-col md="6" v-for="item in dataDP" :key="item.id">
                 <b-link to="" class="item-list">
                   <div class="icon">
-                    <img :src="item.icon" alt="">
+                    <img src="/pdf.png" alt="">
                   </div>
-                  <h5>{{ item.title }}</h5>
-                  <h6>{{ item.size }}</h6>
+                  <h5>{{ item.judul }}</h5>
+                  <h6>{{ item.deskripsi }}</h6>
                 </b-link>
               </b-col>
             </b-row>
             <b-row>
               <b-col class="text-center">
-                <b-link @click="loadMore" 
-                  class="btn btn-outline-black d-inline-block mx-auto"
-                  v-if="this.showPenelitian.length > 4 && this.show < this.showPenelitian.length"
+                <b-link @click="loadDP()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
                 >
                   Tampilkan lebih banyak
                   <img src="/angle-down-black.png" alt="">
@@ -67,9 +67,11 @@ export default {
   },
   data() {
     return{
-      showPenelitian: [],
-      show: 6,
-      search: '',
+      sort: "",
+      search: "",
+      current_page: 1,
+      last_page: 0,
+      dataDP: [],
       penelitians: [
         { 
           id: 1, 
@@ -171,22 +173,35 @@ export default {
     }
   },
   mounted() {
-    this.showPenelitian = this.penelitians
+    this.getDP()
   },
   computed: {
-    cutPenelitian(){
-      return this.showPenelitian.slice(0, this.show)
-    },
+    compare(){
+      return this.current_page >= this.last_page
+    }
   },
   methods: {
-    loadMore(){
-      this.show += 4
-    },
-    searchList(){
-      let tempSearch = this.penelitians.filter( obj => obj.title.toLowerCase().includes(this.search.toLowerCase()))
+    async getDP() {
+      let tempDP = await this.$axios.$get(`/daftar-penelitian?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
 
-      this.showPenelitian = tempSearch
-    }
+      this.dataDP.push.apply(this.dataDP, tempDP.data.data)
+      this.last_page = tempDP.data.last_page
+    },
+    async loadDP() {
+      this.current_page += 1
+      let tempDP = await this.$axios.$get(`/daftar-penelitian?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataDP.push.apply(this.dataDP, tempDP.data.data)
+      this.last_page = tempDP.data.last_page
+    },
+    async searchDP() {
+      this.dataDP = []
+      this.current_page = 1
+      let tempDP = await this.$axios.$get(`/daftar-penelitian?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+
+      this.dataDP.push.apply(this.dataDP, tempDP.data.data)
+      this.last_page = tempDP.data.last_page
+    },
   }
 }
 </script>

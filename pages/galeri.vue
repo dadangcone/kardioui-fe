@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="head-inner">
+   <div class="head-inner">
       <b-container>
         <b-row>
           <b-col>
@@ -12,91 +12,122 @@
 
     <div class="galeri-foto">
       <b-container>
-        <b-row>
-          <b-col md="12">
-            <h2>Galeri Foto</h2>
-          </b-col>
-          <b-col md="12">
+         <b-row>
+           <b-col md="12">
+            <h4 class="section-minititle">Galeri Foto</h4>
+            <div class="clearfix"></div>
             <b-row>
-              <b-col md="4" v-for="photo in photos" :key="photo.id">
+              <b-col md="4" v-for="photo in dataFoto" :key="photo.id">
                 <b-link class="galeri-item">
-                  <span class="small-tips">8 Foto</span>
-                  <div
-                    class="image"
-                    :style="{ backgroundImage: 'url(' + photo.img + ')' }"
-                  ></div>
-                  <h5>{{ photo.title }}</h5>
-                  <h6>{{ photo.date }}</h6>
+                  <span class="small-tips">{{ photo.galeri_foto_detail.length }} Foto</span>
+                  <div class="image" :style="{ backgroundImage: 'url(' + photo.galeri_foto_detail[0].url_foto + ')' }"></div>
+                  <h5>{{ photo.judul }}</h5>
+                  <h6>{{ photo.created_at | moment("DD/MM/YYYY") }}</h6>
+                </b-link>
+              </b-col>
+              <b-col md="12" class="text-center">
+                <b-link @click="loadFoto()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare"
+                >
+                  Tampilkan lebih banyak
+                  <img src="/angle-down-black.png" alt="">
                 </b-link>
               </b-col>
             </b-row>
           </b-col>
+         
         </b-row>
       </b-container>
     </div>
 
     <div class="galeri-foto white-wrap">
       <b-container>
-        <b-row>
-          <b-col md="12">
-            <h2>Galeri Foto</h2>
+         <b-row>
+           <b-col md="12">
+            <h4 class="section-minititle">Galeri Video</h4>
+            <div class="clearfix"></div>
+            <b-row>
+              <b-col md="4" v-for="video in dataVideo" :key="video.id">
+                <b-link class="galeri-item">
+                  <iframe :src="`https://www.youtube.com/embed/` + video.link.slice(-11)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <h5>{{ video.judul }}</h5>
+                  <h6>{{ video.created_at | moment("DD/MM/YYYY") }}</h6>
+                </b-link>
+              </b-col>
+              <b-col md="12" class="text-center">
+                <b-link @click="loadVideo()" 
+                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                  v-if="!compare2"
+                >
+                  Tampilkan lebih banyak
+                  <img src="/angle-down-black.png" alt="">
+                </b-link>
+              </b-col>
+            </b-row>
           </b-col>
-          <b-col md="12">
-            <p>Comming Soon</p>
-          </b-col>
+         
         </b-row>
       </b-container>
     </div>
+
+    
+
+    
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {
+    return{
+      current_page: 1,
+      last_page: 0,
+      current_page2: 1,
+      last_page2: 0,
+      dataFoto: [],
+      dataVideo: [],
       photos: [
         {
           id: 1,
-          img: "/news.png",
-          title: "Rapat Kerja Departemen",
-          date: "1-2 FEBRUARI 2020",
-          jml: "8",
+          img: '/news.png',
+          title: 'Rapat Kerja Departemen',
+          date: '1-2 FEBRUARI 2020',
+          jml: '8'
         },
         {
           id: 2,
-          img: "/news2.png",
-          title: "World Heart Day, Selamat Hari Jantung Sedunia. ",
-          date: "27 September 2019",
-          jml: "10",
+          img: '/news2.png',
+          title: 'World Heart Day, Selamat Hari Jantung Sedunia. ',
+          date: '27 September 2019',
+          jml: '10'
         },
         {
           id: 3,
-          img: "/news3.png",
-          title:
-            "Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.",
-          date: "26-28 Juli 2019",
-          jml: "11",
+          img: '/news3.png',
+          title: 'Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.',
+          date: '26-28 Juli 2019',
+          jml: '11'
         },
       ],
       gallerys: [
         {
           id: 1,
-          img: "/galery.png",
-          title: "31th Weekend Course on Cardiology (WECOC)",
-          desc: "Acara telah sukses terlaksana.",
+          img: '/galery.png',
+          title: '31th Weekend Course on Cardiology (WECOC)',
+          desc: 'Acara telah sukses terlaksana.'
         },
         {
           id: 2,
-          img: "/sekilas.png",
-          title: "World Heart Day, Selamat Hari Jantung Sedunia. ",
-          desc: "Acara telah sukses terlaksana.",
+          img: '/sekilas.png',
+          title: 'World Heart Day, Selamat Hari Jantung Sedunia. ',
+          desc: 'Acara telah sukses terlaksana.'
         },
         {
           id: 3,
-          img: "/galery.png",
-          title:
-            "Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.",
-          desc: "Acara telah sukses terlaksana.",
+          img: '/galery.png',
+          title: 'Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.',
+          desc: 'Acara telah sukses terlaksana.'
         },
       ],
       textSetting: {
@@ -109,9 +140,47 @@ export default {
         dots: false,
         swipe: false,
       },
-    };
+    }
   },
-  mounted() {},
-  methods: {},
-};
+  mounted() {
+    this.getFoto()
+    this.getVideo()
+  },
+  computed: {
+    compare(){
+      return this.current_page >= this.last_page
+    },
+    compare2(){
+      return this.current_page2 >= this.last_page2
+    }
+  },
+  methods: {
+    async getFoto() {
+      let tempFoto = await this.$axios.$get(`/galeri-foto?page=` + this.current_page)
+
+      this.dataFoto.push.apply(this.dataFoto, tempFoto.data.data)
+      this.last_page = tempFoto.data.last_page
+    },
+    async loadFoto() {
+      this.current_page += 1
+      let tempFoto = await this.$axios.$get(`/galeri-foto?page=` + this.current_page)
+
+      this.dataFoto.push.apply(this.dataFoto, tempFoto.data.data)
+      this.last_page = tempFoto.data.last_page
+    },
+    async getVideo() {
+      let tempVideo = await this.$axios.$get(`/galeri-video?page=` + this.current_page2)
+
+      this.dataVideo.push.apply(this.dataVideo, tempVideo.data.data)
+      this.last_page2 = tempVideo.data.last_page
+    },
+    async loadVideo() {
+      this.current_page2 += 1
+      let tempVideo = await this.$axios.$get(`/galeri-video?page=` + this.current_page2)
+
+      this.dataVideo.push.apply(this.dataVideo, tempVideo.data.data)
+      this.last_page2 = tempVideo.data.last_page
+    },
+  },
+}
 </script>

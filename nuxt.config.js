@@ -11,7 +11,7 @@ export default {
       { hid: 'description', name: 'description', content: '' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
+      { rel: 'icon', type: 'image/x-icon', href: '/favicon.png' },
       {
         rel: 'stylesheet',
         href: 'https://use.fontawesome.com/releases/v5.7.2/css/all.css',
@@ -40,6 +40,7 @@ export default {
     { src: '~/plugins/vue-slick-carousel.js', mode: 'client' },
     { src: '~/plugins/vue2-google-maps.js', mode: 'client' },
     { src: '~/plugins/vue-markdown.js', mode: 'client' },
+    { src: '~/plugins/vue-moment.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
