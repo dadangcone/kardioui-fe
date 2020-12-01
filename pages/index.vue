@@ -16,13 +16,13 @@
       <b-container>
         <b-row>
           <b-col md="4" v-for="data in dataAgenda" :key="data.id">
-            <div class="event-item">
+            <b-link :to="`/agenda/` + data.slug" class="event-item">
               <div class="date">
                 <h3>{{ data.created_at | moment("DD") }}</h3>
                 <h6>{{ data.created_at | moment("MMM") }}</h6>
               </div>
               <p>{{ data.judul }}</p>
-            </div>
+            </b-link>
           </b-col>
         </b-row>
       </b-container>
@@ -53,7 +53,7 @@
             <b-link to="/berita" class="btn btn-outline-black btn-more">Selengkapnya <img src="/angle-right-black.png" alt=""></b-link>
           </b-col>
           <b-col md="4" v-for="news in dataBerita" :key="news.id">
-            <b-link class="news-item">
+            <b-link :to="`/berita/` + news.slug" class="news-item">
               <div class="image" :style="{ backgroundImage: 'url(' + news.thumbnail + ')' }"></div>
               <h5>{{ news.judul }}</h5>
               <h6>{{ news.created_at | moment('DD MMMM YYYY') }}</h6>

@@ -41,6 +41,7 @@ export default {
     { src: '~/plugins/vue2-google-maps.js', mode: 'client' },
     { src: '~/plugins/vue-markdown.js', mode: 'client' },
     { src: '~/plugins/vue-moment.js', mode: 'client' },
+    { src: '~/plugins/vue-easy-lightbox.js', mode: 'client' },
   ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)

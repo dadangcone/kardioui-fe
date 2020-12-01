@@ -18,7 +18,7 @@
             <div class="clearfix"></div>
             <b-row>
               <b-col md="4" v-for="data in dataBerita" :key="data.id">
-                <b-link class="galeri-item">
+                <b-link :to="'/berita/' + data.slug"  class="galeri-item">
                   <div class="image" :style="{ backgroundImage: 'url(' + data.thumbnail + ')' }"></div>
                   <h5>{{ data.judul }}</h5>
                   <h6>{{ data.created_at | moment("DD/MM/YYYY") }}</h6>
@@ -50,7 +50,7 @@
         
         <b-row>
           <b-col md="6" v-for="data in dataAgenda" :key="data.id">
-            <b-link class="galeri-item agenda">
+            <b-link :to="'/agenda/' + data.slug" class="galeri-item agenda">
               <b-row>
                 <b-col md="5">
                   <div class="image" :style="{ backgroundImage: 'url(' + data.thumbnail + ')' }">

@@ -16,10 +16,10 @@
            <b-col md="12">
             <h4 class="section-minititle">Galeri Foto</h4>
             <div class="clearfix"></div>
+            <VueGallery :images="onlyFoto" :index="index" @close="index = null"></VueGallery>
             <b-row>
-              <b-col md="4" v-for="photo in dataFoto" :key="photo.id">
-                <b-link class="galeri-item">
-                  <span class="small-tips">{{ photo.galeri_foto_detail.length }} Foto</span>
+              <b-col md="4" v-for="(photo, imageIndex) in dataFoto" :key="photo.id">
+                <b-link @click="index = imageIndex"  class="galeri-item">
                   <div class="image" :style="{ backgroundImage: 'url(' + photo.galeri_foto_detail[0].url_foto + ')' }"></div>
                   <h5>{{ photo.judul }}</h5>
                   <h6>{{ photo.created_at | moment("DD/MM/YYYY") }}</h6>
@@ -72,20 +72,25 @@
     </div>
 
     
-
-    
   </div>
 </template>
 
 <script>
+import _ from 'lodash'
+
 export default {
+  components: {
+
+  },
   data() {
     return{
+      index: null,
       current_page: 1,
       last_page: 0,
       current_page2: 1,
       last_page2: 0,
       dataFoto: [],
+      onlyFoto: [],
       dataVideo: [],
       photos: [
         {
@@ -157,8 +162,10 @@ export default {
   methods: {
     async getFoto() {
       let tempFoto = await this.$axios.$get(`/galeri-foto?page=` + this.current_page)
+      let tempFile = _.map(tempFoto.data.data, 'galeri_foto_detail[0].url_foto');
 
       this.dataFoto.push.apply(this.dataFoto, tempFoto.data.data)
+      this.onlyFoto.push.apply(this.onlyFoto, tempFile)
       this.last_page = tempFoto.data.last_page
     },
     async loadFoto() {
