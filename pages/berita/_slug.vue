@@ -6,7 +6,7 @@
           <b-col>
             <div
               class="hero-image"
-              :style="{ backgroundImage: `url('${dataDetail.thumbnail}')`}"
+              :style="{ backgroundImage: `url('${dataDetail.url_banner}')`}"
             ></div>
           </b-col>
         </b-row>
@@ -18,9 +18,9 @@
         <b-row>
           <b-col md="8" offset-md="2">
             <h3>{{ dataDetail.judul }}</h3>
-            <h6>{{ dataDetail.publish_date | moment("DD/MM/YYYY") }}</h6>
-            <vue-markdown>{{ dataDetail.konten }}</vue-markdown>
-            <b-link class="btn btn-primary" to="/berita">Back to berita & agenda</b-link>
+            <h6>{{ dataDetail.publish_date | moment("DD/MM/YYYY") }} oleh {{ dataDetail.penulis }}</h6>
+            <div class="berita-detail"> <vue-markdown>{{ dataDetail.konten }}</vue-markdown></div>
+            <b-link class="btn-berita-detail" to="/berita">Kembali ke halaman berita & agenda</b-link>
           </b-col>
         </b-row>
       </b-container>

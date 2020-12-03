@@ -4,9 +4,10 @@
   background-position: center center;
   position: relative;
   width: 100%;
-  height: 540px;
-  display: flex;
+  height: 650px;
+  display: flex !important;
   align-items: center;
+  justify-content: center;
   @media screen and (max-width: 991px){
     height: 440px;
   }
@@ -23,11 +24,28 @@
     bottom: 0;
     background-color: rgba($color: #000000, $alpha: 0.6);
   }
+  .banner{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: 50% 120%;
+    @media screen and (max-width: 991px){
+      height: 440px;
+    }
+    @media screen and (max-width: 767px){
+      height: 400px;
+    }
+  }
+  .hero-text{
+    padding-top: 50px;
+    width: 100%;
+  }
   h2{
     color: $wt;
     font-weight: 500;
     font-size: 44px;
-    margin-bottom: 5px;
+    margin-bottom: 20px;
     line-height: 1.25;
     position: relative;
     z-index: 2;
@@ -382,4 +400,7 @@
       }
     }
   }
+}
+#__layout{
+  overflow-x: hidden;
 }

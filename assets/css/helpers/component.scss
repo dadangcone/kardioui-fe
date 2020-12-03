@@ -81,3 +81,13 @@
   font-size: 28px;
   font-weight: 500;
 }
+
+.slick-dots{
+  bottom: 15px !important;
+  li{
+    button:before{
+      color: #fff !important;
+      opacity: 0.6 !important;
+    }
+  }
+}

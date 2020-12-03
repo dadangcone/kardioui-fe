@@ -12,17 +12,15 @@
 						</p>
 					</b-col>
 					<b-col md="3">
-						<b-link to="">Tentang Kami</b-link>
-						<b-link to="">Scientific Meeting</b-link>
-						<b-link to="">Pendidikan PPDS</b-link>
-						<b-link to="">Divisi & Pelayanan Unggulan</b-link>
-						<b-link to="">Berita & Acara</b-link>
+						<b-link to="/tentang">Tentang Kami</b-link>
+						<b-link to="/penerimaan">Penerimaan</b-link>
+						<b-link to="/penelitian">Penelitian</b-link>
+						<b-link to="/pengabdian-masyarakat">Pengabdian Masyarakat</b-link>
 					</b-col>
 					<b-col md="3">
-						<b-link to="">Guideline</b-link>
-						<b-link to="">Daftar Publikasi</b-link>
-						<b-link to="">Forum Tanya Jawab</b-link>
-						<b-link to="">Galeri</b-link>
+						<b-link to="/publikasi">Daftar Publikasi</b-link>
+						<b-link to="/berita">Berita & Agenda</b-link>
+						<b-link to="/galeri">Galeri</b-link>
 					</b-col>
 					<b-col md="2">
 						<b-link to="" class="socmed"><i class="fab fa-facebook-f"></i></b-link>
