@@ -18,7 +18,7 @@
         <b-row>
           <b-col md="8" offset-md="2">
             <h3>{{ dataDetail.judul }}</h3>
-            <h6>{{ dataDetail.publish_date | moment("DD/MM/YYYY") }} oleh {{ dataDetail.penulis }}</h6>
+            <h6>{{ dataDetail.publish_date | formatDateSlash }} oleh {{ dataDetail.penulis }}</h6>
             <div class="berita-detail"> <vue-markdown>{{ dataDetail.konten }}</vue-markdown></div>
             <b-link class="btn-berita-detail" to="/berita">Kembali ke halaman berita & agenda</b-link>
           </b-col>

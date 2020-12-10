@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="head-inner">
-      <b-container>
-        <b-row>
-          <b-col>
-            <h3>Publikasi</h3>
-            <div class="hero-image" style="background-image: url('/publikasi.png')"></div>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
+    <HeadInner menu="Publikasi Jurnal" />
 
     <NavPublikasi  />
 

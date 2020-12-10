@@ -22,7 +22,7 @@
                 <b-link @click="index = imageIndex"  class="galeri-item">
                   <div class="image" :style="{ backgroundImage: 'url(' + photo.galeri_foto_detail[0].url_foto + ')' }"></div>
                   <h5>{{ photo.judul }}</h5>
-                  <h6>{{ photo.created_at | moment("DD/MM/YYYY") }}</h6>
+                  <h6>{{ photo.created_at | formatDateSlash }}</h6>
                 </b-link>
               </b-col>
               <b-col md="12" class="text-center">
@@ -52,7 +52,7 @@
                 <b-link class="galeri-item">
                   <iframe :src="`https://www.youtube.com/embed/` + video.link.slice(-11)" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   <h5>{{ video.judul }}</h5>
-                  <h6>{{ video.created_at | moment("DD/MM/YYYY") }}</h6>
+                  <h6>{{ video.created_at | formatDateSlash }}</h6>
                 </b-link>
               </b-col>
               <b-col md="12" class="text-center">

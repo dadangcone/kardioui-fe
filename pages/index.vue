@@ -14,7 +14,7 @@
             </b-row>
           </b-container>
         </div>
-         <img v-bind:src="banner.banner" v-bind:alt="banner" class="banner">
+        <img v-bind:src="banner.url_banner" v-bind:alt="banner" class="banner">
         <!-- <img src="hero.png" alt="" class="banner" :style="{ src: `url('${dataDetail.thumbnail}')`}" /> -->
       </div>
 
@@ -46,8 +46,8 @@
           <b-col md="4" v-for="data in dataAgenda" :key="data.id">
             <b-link :to="`/agenda/` + data.slug" class="event-item">
               <div class="date">
-                <h3>{{ data.created_at | moment("DD") }}</h3>
-                <h6>{{ data.created_at | moment("MMM") }}</h6>
+                <h3>{{ data.created_at | formatDay }}</h3>
+                <h6>{{ data.created_at | formatMonth }}</h6>      
               </div>
               <p>{{ data.judul }}</p>
             </b-link>
@@ -99,7 +99,7 @@
                 :style="{ backgroundImage: 'url(' + news.thumbnail + ')' }"
               ></div>
               <h5>{{ news.judul }}</h5>
-              <h6>{{ news.created_at | moment("DD MMMM YYYY") }}</h6>
+                <h6>{{ news.created_at | formatDate }}</h6>
             </b-link>
           </b-col>
         </b-row>
@@ -108,60 +108,45 @@
 
     <div class="gallery">
       <b-container fluid class="px-0">
-        <b-row no-gutters class="align-items-center">
-          <b-col md="5" offset-md="1">
-            <div class="gallery-head">
-              <h5>Galeri foto</h5>
-              <b-link to="/galeri" class="btn btn-outline-secondary"
-                >Lihat Lainnya <img src="/angle-right-yellow.png" alt=""
-              /></b-link>
+        <VueSlickCarousel
+          v-bind="textSetting"
+          ref="textList"
+          :asNavFor="$refs.gallery"
+          :focusOnSelect="true"
+        >
+          <div 
+            class="gallery-item"
+            v-for="gal in dataGallery"
+            :key="gal.id"
+          >
+            <div class="gallery-left">
+              <div class="gallery-head">
+                <h5>Galeri foto</h5>
+                <b-link to="/galeri" class="btn btn-outline-secondary"
+                  >Lihat Lainnya <img src="/angle-right-yellow.png" alt=""
+                /></b-link>
+              </div>
+              <div class="gallery-text">
+                <h3>{{ gal.judul }}</h3>
+                <h6>{{ gal.publish }}</h6>
+              </div>
             </div>
-            <!-- <client-only> -->
-              <VueSlickCarousel
-                v-bind="textSetting"
-                ref="textList"
-                :asNavFor="$refs.gallery"
-                :focusOnSelect="true"
-              >
-                <div
-                  class="gallery-text"
-                  v-for="text in dataGallery"
-                  :key="text.id"
-                >
-                  <h3>{{ text.judul }}</h3>
-                  <h6>{{ text.publish }}</h6>
-                </div>
-              </VueSlickCarousel>
-            <!-- </client-only> -->
-          </b-col>
-          <b-col md="6">
-            <!-- <client-only> -->
-              <VueSlickCarousel
-                v-bind="imageSetting"
-                ref="gallery"
-                :asNavFor="$refs.textList"
-                :focusOnSelect="true"
-              >
-                <div
-                  class="gallery-image"
-                  v-for="image in dataGallery"
-                  :key="image.id"
-                  :focusOnSelect="true"
-                  :style="{
-                    backgroundImage:
-                      'url(' + image.galeri_foto_detail[0].url_foto + ')',
-                  }"
-                ></div>
-              </VueSlickCarousel>
-            <!-- </client-only> -->
-          </b-col>
-        </b-row>
+            <div
+              class="gallery-image"
+              :style="{
+                backgroundImage:
+                  'url(' + gal.galeri_foto_detail[0].url_foto + ')',
+              }"
+            ></div>
+          </div>
+        </VueSlickCarousel>
       </b-container>
     </div>
   </div>
 </template>
 
 <script>
+import _ from "lodash";
 
 export default {
   head() {
@@ -203,12 +188,20 @@ export default {
     let tempGallery = await app.$axios.$get(`/galeri-foto`);
     let tempAgenda = await app.$axios.$get(`/agenda`);
     let tempBerita = await app.$axios.$get(`/berita`);
-    let tempBanner = await app.$axios.$get(`/banner`);
+    let getBanner = await app.$axios.$get(`/banner`)
+    let filteredBanner = _.filter(getBanner.data, ['menu', 'Home'])
+    let tempBanner = null
+    if(filteredBanner.length > 0){
+      tempBanner = filteredBanner
+    } else {
+      tempBanner = []
+    }
+
     return {
       dataGallery: tempGallery.data.data,
       dataAgenda: tempAgenda.data.data.slice(0, 3),
       dataBerita: tempBerita.data.data.slice(0, 3),
-      dataBanner: tempBanner.data.data.slice(0, 3),
+      dataBanner: tempBanner,
     };
   },
   data() {
@@ -258,12 +251,6 @@ export default {
       textSetting: {
         arrows: false,
         dots: true,
-        swipe: false,
-      },
-      imageSetting: {
-        arrows: false,
-        dots: false,
-        swipe: false,
       },
       bannerSettings: {
         dots: true,
@@ -276,7 +263,9 @@ export default {
       },
     };
   },
-  mounted() {},
+  mounted() {
+    
+  },
   methods: {},
 };
 </script>

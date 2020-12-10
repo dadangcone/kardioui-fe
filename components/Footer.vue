@@ -23,8 +23,9 @@
 						<b-link to="/galeri">Galeri</b-link>
 					</b-col>
 					<b-col md="2">
-						<b-link to="" class="socmed"><i class="fab fa-facebook-f"></i></b-link>
-						<b-link to="" class="socmed"><i class="fab fa-instagram"></i></b-link>
+						<!-- <b-link to="" class="socmed"><i class="fab fa-facebook-f"></i></b-link> -->
+						<b-link href="https://www.instagram.com/ykvi.kardiologi/" target="_blank" class="socmed"><i class="fab fa-instagram"></i></b-link>
+						<b-link href="https://www.youtube.com/channel/UCekqBXYi2bhILgDQIakMYEw" target="_blank" class="socmed"><i class="fab fa-youtube"></i></b-link>
 					</b-col>
         </b-row>
       </b-container>

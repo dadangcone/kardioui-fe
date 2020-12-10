@@ -46,13 +46,7 @@
                       <span class="validator text-danger">{{ errors[0] }}</span>
                     </ValidationProvider>
                   </b-col>
-                  <b-col md="6">
-                    <ValidationProvider name="Nomor Telepon" rules="required" v-slot="{ errors }" class="form-wrap">
-                      <b-form-input v-model="kontak.phone" :class="[{'is-invalid': errors[0] }, errors[0] ? 'mb-1' : 'mb-3' ]" placeholder="Nomor Telepon"></b-form-input>
-                      <span class="validator text-danger">{{ errors[0] }}</span>
-                    </ValidationProvider>
-                  </b-col>
-                  <b-col md="6">
+                  <b-col md="12">
                     <ValidationProvider name="Judul" rules="required" v-slot="{ errors }" class="form-wrap">
                       <b-form-input v-model="kontak.judul" :class="[{'is-invalid': errors[0] }, errors[0] ? 'mb-1' : 'mb-3' ]" placeholder="Judul"></b-form-input>
                       <span class="validator text-danger">{{ errors[0] }}</span>
@@ -122,7 +116,6 @@ export default {
       kontak: {
         nama: '',
         email: '',
-        phone: '',
         judul: '',
         pesan: '',
       }
@@ -134,11 +127,10 @@ export default {
       this.reset = false
       try{
         let formKontak = new FormData()
-        formKontak.append('name', this.kontak.nama)
+        formKontak.append('nama', this.kontak.nama)
         formKontak.append('email', this.kontak.email)
-        formKontak.append('phone_number', this.kontak.phone)
-        formKontak.append('subject', this.kontak.judul)
-        formKontak.append('message', this.kontak.pesan)
+        formKontak.append('judul', this.kontak.judul)
+        formKontak.append('pesan', this.kontak.pesan)
 
         await this.$axios.$post(`/contact-us`, formKontak)
         this.$toast.success('Terimakasih telah menghubungi kami!').goAway(3000);
@@ -146,7 +138,6 @@ export default {
         // reset form
         this.kontak.nama = ''
         this.kontak.email = ''
-        this.kontak.phone = ''
         this.kontak.judul = ''
         this.kontak.pesan = ''
         this.$nextTick(() => this.$refs.observer.reset());

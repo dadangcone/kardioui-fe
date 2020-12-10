@@ -26,7 +26,7 @@
             <b-nav-item to="/galeri">Galeri</b-nav-item>
             <b-nav-item to="/publikasi">Publikasi</b-nav-item>
             <b-nav-item to="/berita">Berita & Agenda</b-nav-item>
-            <b-nav-item><img src="/search.png" alt=""></b-nav-item>
+            <b-nav-item to="/search"><img src="/search.png" alt=""></b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>

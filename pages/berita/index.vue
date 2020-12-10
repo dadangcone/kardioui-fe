@@ -21,7 +21,7 @@
                 <b-link :to="'/berita/' + data.slug"  class="galeri-item">
                   <div class="image" :style="{ backgroundImage: 'url(' + data.thumbnail + ')' }"></div>
                   <h5>{{ data.judul }}</h5>
-                  <h6>{{ data.created_at | moment("DD/MM/YYYY") }}</h6>
+                  <h6>{{ data.created_at | formatDateSlash }}</h6>
                 </b-link>
               </b-col>
               <b-col md="12" class="text-center">
@@ -56,8 +56,8 @@
                   <div class="image" :style="{ backgroundImage: 'url(' + data.thumbnail + ')' }">
                     <div class="wrap">
                       <div>
-                        <span class="date">{{ data.created_at | moment("DD") }}</span>
-                        <span class="month">{{ data.created_at | moment("MMM") }}</span>
+                        <span class="date">{{ data.created_at | formatDay }}</span>
+                        <span class="month">{{ data.created_at | formatMonth }}</span>
                       </div>
                     </div>
                   </div>

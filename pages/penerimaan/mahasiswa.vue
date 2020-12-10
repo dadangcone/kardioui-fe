@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="head-inner">
-      <b-container>
-        <b-row>
-          <b-col>
-            <h3>Penerimaan</h3>
-            <div class="hero-image" style="background-image: url('/penerimaan2.png')"></div>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
+    <HeadInner menu="Penerimaan Mahasiswa" />
 
     <NavPenerimaan />
 

@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="head-inner">
-      <b-container>
-        <b-row>
-          <b-col>
-            <h3>Pengabdian Masyarakat</h3>
-            <div class="hero-image" style="background-image: url('/pengabdian.jpg')"></div>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
+    <HeadInner menu="Pengabdian Masyarakat" />
 
     <div class="content-inner">
       <b-container>

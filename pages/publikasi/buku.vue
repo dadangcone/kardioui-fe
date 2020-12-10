@@ -1,15 +1,6 @@
 <template>
   <div>
-    <div class="head-inner">
-      <b-container>
-        <b-row>
-          <b-col>
-            <h3>Publikasi</h3>
-            <div class="hero-image" style="background-image: url('/penelitian3.png')"></div>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
+    <HeadInner menu="Publikasi Buku" />
 
     <NavPublikasi  />
 
@@ -36,7 +27,7 @@
 
                   <h5>{{ item.judul }}</h5>
                   <h6 class="desc">{{ item.deskripsi }}</h6>
-                  <span class="size d-none">{{ item.created_at | moment("DD/MM/YYYY") }}</span>
+                  <span class="size d-none">{{ item.created_at | formatDateSlash }}</span>
                 </b-link>
               </b-col>
             </b-row>

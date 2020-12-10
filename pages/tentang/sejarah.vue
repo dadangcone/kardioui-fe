@@ -1,16 +1,7 @@
 <template>
   <div>
-    <div class="head-inner">
-      <b-container>
-        <b-row>
-          <b-col>
-            <h3>Tentang</h3>
-            <div class="hero-image" style="background-image: url('/tentang-banner.jpg')"></div>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
-
+    <HeadInner menu="Tentang Kami" />
+    
     <NavTentang />
 
     <div class="content-inner">
