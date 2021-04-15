@@ -7,32 +7,42 @@
             <b-row>
               <b-col md="8">
                 <b-breadcrumb :items="items"></b-breadcrumb>
-                <div class="galeri-foto news">
+                <div class="galeri-foto">
                   <b-row>
                     <b-col md="12">
-                      <h4 class="section-minititle">
-                        Berita seputar kardiologi
-                      </h4>
+                      <h4 class="section-minititle">Galeri Foto</h4>
                       <div class="clearfix"></div>
+                      <VueGallery
+                        :images="onlyFoto"
+                        :index="index"
+                        @close="index = null"
+                      ></VueGallery>
                       <b-row>
-                        <b-col md="4" v-for="data in dataBerita" :key="data.id">
+                        <b-col
+                          md="4"
+                          v-for="(photo, imageIndex) in dataFoto"
+                          :key="photo.id"
+                        >
                           <b-link
-                            :to="'/berita/' + data.slug"
+                            @click="index = imageIndex"
                             class="galeri-item"
                           >
                             <div
                               class="image"
                               :style="{
-                                backgroundImage: 'url(' + data.thumbnail + ')'
+                                backgroundImage:
+                                  'url(' +
+                                  photo.galeri_foto_detail[0].url_foto +
+                                  ')'
                               }"
                             ></div>
-                            <h5>{{ data.judul }}</h5>
-                            <h6>{{ data.created_at | formatDateSlash }}</h6>
+                            <h5>{{ photo.judul }}</h5>
+                            <h6>{{ photo.created_at | formatDateSlash }}</h6>
                           </b-link>
                         </b-col>
                         <b-col md="12" class="text-center">
                           <b-link
-                            @click="loadBerita()"
+                            @click="loadFoto()"
                             class="btn btn-outline-black d-inline-block mx-auto mt-5"
                             v-if="!compare"
                           >
@@ -46,7 +56,7 @@
                 </div>
               </b-col>
               <b-col md="4">
-                <NavBerita />
+                <NavGallery />
               </b-col>
             </b-row>
           </b-col>
@@ -57,34 +67,42 @@
 </template>
 
 <script>
+import _ from "lodash";
+
 export default {
+  components: {},
   data() {
     return {
+      index: null,
       current_page: 1,
       last_page: 0,
       current_page2: 1,
       last_page2: 0,
-      dataBerita: [],
-      dataAgenda: [],
-      news: [
+      dataFoto: [],
+      onlyFoto: [],
+      dataVideo: [],
+      photos: [
         {
           id: 1,
           img: "/news.png",
           title: "Rapat Kerja Departemen",
-          date: "1-2 FEBRUARI 2020"
+          date: "1-2 FEBRUARI 2020",
+          jml: "8"
         },
         {
           id: 2,
           img: "/news2.png",
           title: "World Heart Day, Selamat Hari Jantung Sedunia. ",
-          date: "27 September 2019"
+          date: "27 September 2019",
+          jml: "10"
         },
         {
           id: 3,
           img: "/news3.png",
           title:
             "Bakti Sosial dan Penelitian Kardiovaskular di Kabupaten Natuna.",
-          date: "26-28 Juli 2019"
+          date: "26-28 Juli 2019",
+          jml: "11"
         }
       ],
       gallerys: [
@@ -124,19 +142,19 @@ export default {
           href: "/"
         },
         {
-          text: "Berita & Agenda",
-          href: "/berita"
+          text: "Galeri",
+          href: "/galeri"
         },
         {
-          text: "Berita",
+          text: "Galeri Foto",
           active: true
         }
       ]
     };
   },
   mounted() {
-    this.getBerita();
-    this.getAgenda();
+    this.getFoto();
+    this.getVideo();
   },
   computed: {
     compare() {
@@ -147,39 +165,44 @@ export default {
     }
   },
   methods: {
-    async getBerita() {
-      let tempBerita = await this.$axios.$get(
-        `/berita?page=` + this.current_page
+    async getFoto() {
+      let tempFoto = await this.$axios.$get(
+        `/galeri-foto?page=` + this.current_page
+      );
+      let tempFile = _.map(
+        tempFoto.data.data,
+        "galeri_foto_detail[0].url_foto"
       );
 
-      this.dataBerita.push.apply(this.dataBerita, tempBerita.data.data);
-      this.last_page = tempBerita.data.last_page;
+      this.dataFoto.push.apply(this.dataFoto, tempFoto.data.data);
+      this.onlyFoto.push.apply(this.onlyFoto, tempFile);
+      this.last_page = tempFoto.data.last_page;
     },
-    async loadBerita() {
+    async loadFoto() {
       this.current_page += 1;
-      let tempBerita = await this.$axios.$get(
-        `/berita?page=` + this.current_page
+      let tempFoto = await this.$axios.$get(
+        `/galeri-foto?page=` + this.current_page
       );
 
-      this.dataBerita.push.apply(this.dataBerita, tempBerita.data.data);
-      this.last_page = tempBerita.data.last_page;
+      this.dataFoto.push.apply(this.dataFoto, tempFoto.data.data);
+      this.last_page = tempFoto.data.last_page;
     },
-    async getAgenda() {
-      let tempAgenda = await this.$axios.$get(
-        `/agenda?page=` + this.current_page2
+    async getVideo() {
+      let tempVideo = await this.$axios.$get(
+        `/galeri-video?page=` + this.current_page2
       );
 
-      this.dataAgenda.push.apply(this.dataAgenda, tempAgenda.data.data);
-      this.last_page2 = tempAgenda.data.last_page;
+      this.dataVideo.push.apply(this.dataVideo, tempVideo.data.data);
+      this.last_page2 = tempVideo.data.last_page;
     },
-    async loadAgenda() {
+    async loadVideo() {
       this.current_page2 += 1;
-      let tempAgenda = await this.$axios.$get(
-        `/agenda?page=` + this.current_page2
+      let tempVideo = await this.$axios.$get(
+        `/galeri-video?page=` + this.current_page2
       );
 
-      this.dataAgenda.push.apply(this.dataAgenda, tempAgenda.data.data);
-      this.last_page2 = tempAgenda.data.last_page;
+      this.dataVideo.push.apply(this.dataVideo, tempVideo.data.data);
+      this.last_page2 = tempVideo.data.last_page;
     }
   }
 };

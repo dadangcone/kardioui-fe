@@ -1,5 +1,6 @@
 <template>
   <div class="nav-inner">
+    <h5>TENtANG KAMI</h5>
     <b-link to="/tentang">Sambutan</b-link>
     <b-link to="/tentang/sejarah">Sejarah</b-link>
     <b-link to="/tentang/visi-misi">Visi & Misi</b-link>

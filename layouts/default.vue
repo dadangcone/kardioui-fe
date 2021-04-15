@@ -3,6 +3,6 @@
     <Header />
     <Nuxt />
     <Footer />
-    <ShortContact />
+    <!-- <ShortContact /> -->
   </div>
 </template>

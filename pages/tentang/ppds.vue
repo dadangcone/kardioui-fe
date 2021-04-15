@@ -2,57 +2,65 @@
   <div>
     <HeadInner menu="Tentang Kami" />
 
-    <NavTentang />
-
-    <div class="content-inner">
-      <b-container>
-        <b-row>
-          <b-col md="8" offset-md="2">
-            <h3>PPDS</h3>
-          </b-col>
-        </b-row>
-      </b-container>
-    </div>
-    <div class="content-inner gray-wrap">
-      <b-container>
+    <div class="gray-container">
+      <b-container fluid>
         <b-row>
           <b-col md="12">
-            <b-form-input
-              type="search"
-              class="search-list left big"
-              v-model="search"
-              placeholder="Cari PPDS"
-              v-on:keyup.enter="searchPPDS"
-            ></b-form-input>
-            <div class="sort d-none">
-              <label for="">Filter berdasarkan</label>
-              <b-form-select v-model="sort">
-                <option>Semua Divisi</option>
-                <option>Kardiologi Klinik</option>
-                <option>
-                  Kardiologi Non-Invasif Ekokardiografi dan Treadmill
-                </option>
-              </b-form-select>
+            <div class="rounded-wrap">
+              <b-row>
+                <b-col md="8">
+                  <b-breadcrumb :items="items"></b-breadcrumb>
+                  <div class="content-inner">
+                    <h3>PPDS</h3>
+                    <b-row>
+                      <b-col md="12">
+                        <b-form-input
+                          type="search"
+                          class="search-list left big"
+                          v-model="search"
+                          placeholder="Cari PPDS"
+                          v-on:keyup.enter="searchPPDS"
+                        ></b-form-input>
+                        <div class="sort d-none">
+                          <label for="">Filter berdasarkan</label>
+                          <b-form-select v-model="sort">
+                            <option>Semua Divisi</option>
+                            <option>Kardiologi Klinik</option>
+                            <option>
+                              Kardiologi Non-Invasif Ekokardiografi dan
+                              Treadmill
+                            </option>
+                          </b-form-select>
+                        </div>
+                        <div class="clearfix"></div>
+                        <b-row>
+                          <b-col md="6" v-for="data in dataPPDS" :key="data.id">
+                            <div class="ppds-wrap">
+                              <h5>{{ data.nama_ppds }}</h5>
+                              <h6>{{ data.tanggal_masuk }}</h6>
+                              <h6>{{ data.deskripsi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col md="12" class="text-center">
+                            <b-link
+                              @click="loadPPDS()"
+                              class="btn btn-outline-black d-inline-block mx-auto mt-5"
+                              v-if="!compare"
+                            >
+                              Tampilkan lebih banyak
+                              <img src="/angle-down-black.png" alt="" />
+                            </b-link>
+                          </b-col>
+                        </b-row>
+                      </b-col>
+                    </b-row>
+                  </div>
+                </b-col>
+                <b-col md="4">
+                  <NavTentang />
+                </b-col>
+              </b-row>
             </div>
-            <div class="clearfix"></div>
-            <b-row>
-              <b-col md="6" v-for="data in dataPPDS" :key="data.id">
-                <div class="ppds-wrap">
-                  <h5>{{ data.nama_ppds }}</h5>
-                  <h6>{{ data.tanggal_masuk }}</h6>
-                  <h6>{{ data.deskripsi }}</h6>
-                </div>
-              </b-col>
-              <b-col md="12" class="text-center">
-                <b-link @click="loadPPDS()" 
-                  class="btn btn-outline-black d-inline-block mx-auto mt-5"
-                  v-if="!compare"
-                >
-                  Tampilkan lebih banyak
-                  <img src="/angle-down-black.png" alt="">
-                </b-link>
-              </b-col>
-            </b-row>
           </b-col>
         </b-row>
       </b-container>
@@ -71,33 +79,33 @@ export default {
           hid: "title",
           name: "title",
           content:
-            "Tentang PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
+            "Tentang PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
         },
         {
           hid: "og:title",
           name: "og:title",
           content:
-            "Tentang PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
+            "Tentang PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
         },
         {
           hid: "keywords",
           name: "keywords",
           content:
-            "Yayasan, Universitas Indonesia, Kardiologi, Indonesia, Vaskular, Departemen Kardiologi, Kedokteran Vaskular, Departemen Kardiologi dan Kedokteran Vaskular FK UI",
+            "Yayasan, Universitas Indonesia, Kardiologi, Indonesia, Vaskular, Departemen Kardiologi, Kedokteran Vaskular, Departemen Kardiologi dan Kedokteran Vaskular FK UI"
         },
         {
           hid: "description",
           name: "description",
           content:
-            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular",
+            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular"
         },
         {
           hid: "og:description",
           name: "og:description",
           content:
-            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular",
-        },
-      ],
+            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular"
+        }
+      ]
     };
   },
   data() {
@@ -107,38 +115,67 @@ export default {
       current_page: 1,
       last_page: 0,
       dataPPDS: [],
+      items: [
+        {
+          text: "Beranda",
+          href: "/"
+        },
+        {
+          text: "Tentang Kami",
+          href: "/tentang"
+        },
+        {
+          text: "PPDS",
+          active: true
+        }
+      ]
     };
   },
   mounted() {
-    this.getPPDS()
+    this.getPPDS();
   },
   computed: {
-    compare(){
-      return this.current_page >= this.last_page
+    compare() {
+      return this.current_page >= this.last_page;
     }
   },
   methods: {
     async getPPDS() {
-      let tempPPDS = await this.$axios.$get(`/ppds?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+      let tempPPDS = await this.$axios.$get(
+        `/ppds?search=` +
+          this.search.toLowerCase() +
+          "&page=" +
+          this.current_page
+      );
 
-      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data)
-      this.last_page = tempPPDS.data.last_page
+      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data);
+      this.last_page = tempPPDS.data.last_page;
     },
     async loadPPDS() {
-      this.current_page += 1
-      let tempPPDS = await this.$axios.$get(`/ppds?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+      this.current_page += 1;
+      let tempPPDS = await this.$axios.$get(
+        `/ppds?search=` +
+          this.search.toLowerCase() +
+          "&page=" +
+          this.current_page
+      );
 
-      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data)
-      this.last_page = tempPPDS.data.last_page
+      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data);
+      this.last_page = tempPPDS.data.last_page;
     },
     async searchPPDS() {
-      this.dataPPDS = []
-      this.current_page = 1
-      let tempPPDS = await this.$axios.$get(`/ppds?search=` + this.search.toLowerCase() + '&page=' + this.current_page)
+      this.dataPPDS = [];
+      this.current_page = 1;
+      let tempPPDS = await this.$axios.$get(
+        `/ppds?search=` +
+          this.search.toLowerCase() +
+          "&page=" +
+          this.current_page
+      );
 
-      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data)
-      this.last_page = tempPPDS.data.last_page
-    },
-  },
+      this.dataPPDS.push.apply(this.dataPPDS, tempPPDS.data.data);
+      this.last_page = tempPPDS.data.last_page;
+    }
+  }
 };
 </script>

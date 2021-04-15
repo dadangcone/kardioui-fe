@@ -1,161 +1,165 @@
-.head-inner{
-  padding-top: 60px;
-  @media screen and (max-width: 991px){
-    padding-top: 30px;
+.head-inner {
+  padding-top: 109px;
+  width: 100%;
+  height: 460px;
+  background-size: cover;
+  background-position: center center;
+  @media screen and (max-width: 991px) {
   }
-  h3{
-    font-size: 40px;
-    font-weight: 500;
-    color: $pri;
-    margin-bottom: 60px;
-    text-align: center;
-    @media screen and (max-width: 991px){
-      font-size: 30px;
-      margin-bottom: 30px;
-    }
-  }
-  .hero-image{
-    width: 100%;
-    height: 530px;
-    background-size: cover;
-    background-position: center center;
-    margin-bottom: 20px;
-    @media screen and (max-width: 991px){
-      height: 360px;
-      margin-bottom: 10px;
-    }
-    @media screen and (max-width: 767px){
-      height: 250px;
-    }
-  }
+  // h3 {
+  //   font-size: 40px;
+  //   font-weight: 500;
+  //   color: $pri;
+  //   margin-bottom: 60px;
+  //   text-align: center;
+  //   @media screen and (max-width: 991px) {
+  //     font-size: 30px;
+  //     margin-bottom: 30px;
+  //   }
+  // }
+  // .hero-image {
+  //   width: 100%;
+  //   height: 530px;
+  //   background-size: cover;
+  //   background-position: center center;
+  //   margin-bottom: 20px;
+  //   @media screen and (max-width: 991px) {
+  //     height: 360px;
+  //     margin-bottom: 10px;
+  //   }
+  //   @media screen and (max-width: 767px) {
+  //     height: 250px;
+  //   }
+  // }
 }
 
-.content-inner{
+.content-inner {
   padding: 20px 0 60px 0;
-  &.form-list{
+  &.form-list {
     padding-top: 70px;
-    .sort select{
+    .sort select {
       width: 225px;
     }
   }
-  @media screen and (max-width: 991px){
+  @media screen and (max-width: 991px) {
     padding: 10px 0 30px 0;
   }
-  h3{
-    font-size: 40px;
-    color: $pri;
-    font-weight: 500;
-    margin-bottom: 15px;
-    @media screen and (max-width: 991px){
+  h3 {
+    font-size: 48px;
+    color: $bl;
+    font-weight: bold;
+    margin-bottom: 25px;
+    @media screen and (max-width: 991px) {
       font-size: 30px;
     }
-    &.left{
+    &.left {
       float: left;
     }
   }
-  .search-list{
+  .search-list {
     float: right;
     font-size: 16px;
     width: 280px;
     padding: 12px 12px 12px 42px;
     border-radius: 8px;
-    border: 1px solid #F2F2F2;
-    background-image: url('/search.png');
+    border: 1px solid #f2f2f2;
+    background-image: url("/search.png");
     background-repeat: no-repeat;
     background-position: left 12px center;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       float: none;
       width: 100%;
       margin-bottom: 20px;
     }
-    &.left{
+    &.left {
       float: left;
       margin-bottom: 20px;
       font-family: $r;
     }
-    &.big{
+    &.big {
       width: 350px;
     }
   }
-  .sort{
+  .sort {
     float: right;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       float: left;
       margin-bottom: 20px;
     }
-    label{
+    label {
       display: inline-block;
       visibility: middle;
       color: rgba($color: $bl, $alpha: 0.6);
       margin-right: 10px;
       font-family: $r;
     }
-    select{
+    select {
       width: 104px;
       padding: 12px 35px 12px 15px;
-      border: 1px solid #F2F2F2;
+      border: 1px solid #f2f2f2;
       font-size: 16px;
       border-radius: 8px;
-      background-image: url('/angle-down-black.png');
+      background-image: url("/angle-down-black.png");
       background-position: right 10px center;
       height: auto;
       background-size: auto;
     }
   }
-  p{
-    font-size: 17px;
-    line-height: 1.6;
-    font-family: $r;
-    margin-bottom: 30px;
-    color: rgba($color: $bl, $alpha: 0.6);
-    @media screen and (max-width: 991px){
+  p {
+    font-size: 20px;
+    line-height: 1.6 !important;
+    opacity: 0.7;
+    color: #000 !important;
+    margin-bottom: 20px !important;
+    @media screen and (max-width: 991px) {
       font-size: 14px;
       margin-bottom: 20px;
     }
-    a{
+    a {
       color: $pri;
       transition: all 0.3s ease;
-      &:hover, &:focus{
+      &:hover,
+      &:focus {
         text-decoration: none;
         color: $sec;
       }
     }
   }
-  ol{
+  ol {
     font-family: $r;
     padding-left: 20px;
-    li{
+    li {
       margin-bottom: 5px;
       font-size: 17px;
       font-family: $r;
       color: rgba($color: $bl, $alpha: 0.6);
-      @media screen and (max-width: 991px){
+      @media screen and (max-width: 991px) {
         font-size: 14px;
       }
     }
   }
-  .image-grid{
+  .image-grid {
     width: 100%;
     height: 180px;
     background-size: cover;
     background-position: center center;
     margin-bottom: 20px;
-    @media screen and (max-width: 991px){
+    @media screen and (max-width: 991px) {
       height: 150px;
     }
   }
-  .item-list{
+  .item-list {
     display: block;
     border-radius: 8px;
-    border: 1px solid #F2F2F2;
+    border: 1px solid #f2f2f2;
     padding: 20px 20px 20px 96px;
     position: relative;
     margin-bottom: 20px;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       padding: 15px 15px 15px 75px;
       margin-bottom: 15px;
     }
-    .icon{
+    .icon {
       position: absolute;
       left: 20px;
       top: 50%;
@@ -167,46 +171,46 @@
       width: 54px;
       height: 54px;
       background-color: rgba($color: $pri, $alpha: 0.1);
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         left: 10px;
       }
-      &.desc{
+      &.desc {
         transform: translateY(-70%);
       }
-      &.blue{
-        background-color: rgba($color: #3185E8, $alpha: 0.1);
+      &.blue {
+        background-color: rgba($color: #3185e8, $alpha: 0.1);
       }
     }
-    h5{
+    h5 {
       font-size: 18px;
       font-family: $r;
       margin-bottom: 10px;
       height: 22px;
       overflow: hidden;
       color: $bl;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         font-size: 16px;
         margin-bottom: 5px;
         height: 22px;
       }
     }
-    h6{
+    h6 {
       font-size: 14px;
       color: $bl;
       opacity: 0.6;
       margin-bottom: 0;
       font-family: $r;
       font-weight: normal;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         font-size: 13px;
       }
-      &.desc{
+      &.desc {
         line-height: 1.5;
         height: 42px;
         overflow: hidden;
       }
     }
-    .size{
+    .size {
       position: absolute;
       bottom: 20px;
       left: 30px;
@@ -214,12 +218,13 @@
       font-family: $r;
       color: rgba($color: $bl, $alpha: 0.6);
     }
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       text-decoration: none;
     }
   }
 
-  pre{
+  pre {
     white-space: normal;
   }
 
@@ -234,62 +239,62 @@
   // }
 }
 
-.staf-wrap{
+.staf-wrap {
   background: #fff;
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   padding: 15px 15px;
   border-radius: 8px;
   margin-bottom: 10px;
-  h3{
+  h3 {
     font-size: 18px;
     margin-bottom: 5px;
   }
-  h6{
+  h6 {
     font-size: 15px;
     margin: 0;
     color: $t;
   }
-  .staf-item{
-    ul{
+  .staf-item {
+    ul {
       list-style: none;
       padding: 0;
-      li{
+      li {
         padding-bottom: 6px;
       }
     }
   }
 }
 
-.ppds-wrap{
+.ppds-wrap {
   background: #fff;
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   padding: 10px 15px 5px 15px;
   border-radius: 8px;
   margin-bottom: 10px;
-  h5{
+  h5 {
     font-size: 18px;
     margin-bottom: 5px;
     color: $pri;
   }
-  h6{
+  h6 {
     font-size: 14px;
     margin: 0 0 5px 0;
     color: $t;
   }
 }
 
-.kp-wrap{
+.kp-wrap {
   background: #fff;
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   padding: 25px 15px;
   border-radius: 8px;
   margin-bottom: 10px;
-  h5{
+  h5 {
     font-size: 18px;
     margin-bottom: 5px;
     color: $pri;
   }
-  h6{
+  h6 {
     font-size: 14px;
     margin: 0;
     line-height: 1.5;
@@ -297,29 +302,29 @@
   }
 }
 
-.alumni-wrap{
+.alumni-wrap {
   margin-bottom: 25px;
-  &:after{
+  &:after {
     content: "";
     display: table;
     clear: both;
   }
-  h3{
+  h3 {
     float: left;
     margin-bottom: 0;
   }
-  h6{
+  h6 {
     float: right;
     margin-bottom: 0;
     margin-top: 18px;
   }
-  hr{
+  hr {
     margin: 10px 0;
   }
-  .alumni-item{
+  .alumni-item {
     padding: 0;
     margin: 0;
-    li{
+    li {
       width: 25%;
       float: left;
       margin-bottom: 5px;
@@ -328,22 +333,22 @@
   }
 }
 
-.akreditasi-wrap{
+.akreditasi-wrap {
   background: #fff;
-  border: 1px solid #F2F2F2;
+  border: 1px solid #f2f2f2;
   border-radius: 8px;
   margin-bottom: 10px;
-  img{
+  img {
     max-width: 100%;
   }
-  .wrap{
+  .wrap {
     padding: 20px 15px;
-    h5{
+    h5 {
       font-size: 18px;
       margin-bottom: 5px;
       color: $pri;
     }
-    h6{
+    h6 {
       font-size: 14px;
       margin: 0;
       color: $t;
@@ -351,33 +356,33 @@
   }
 }
 
-.news{
-  h2{
+.news {
+  h2 {
     font-size: 44px;
     font-weight: 500;
     margin-bottom: 40px;
     float: left;
     color: $pri;
-    @media screen and (max-width: 991px){
+    @media screen and (max-width: 991px) {
       font-size: 34px;
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       font-size: 30px;
       float: none;
       display: block;
       margin-bottom: 5px;
     }
   }
-  .btn-more{
+  .btn-more {
     float: right;
     margin: 10px 0 30px 0;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       float: none;
     }
   }
-  .news-item{
+  .news-item {
     display: block;
-    .image{
+    .image {
       border-radius: 6px;
       background-size: cover;
       background-repeat: no-repeat;
@@ -385,11 +390,11 @@
       width: 100%;
       height: 180px;
       margin-bottom: 20px;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         margin-bottom: 10px;
       }
     }
-    h5{
+    h5 {
       height: 55px;
       overflow: hidden;
       font-size: 18px;
@@ -398,60 +403,62 @@
       line-height: 1.4;
       color: $bl;
       transition: all 0.3s ease;
-      @media screen and (max-width: 991px){
+      @media screen and (max-width: 991px) {
         font-size: 16px;
         height: 50px;
       }
     }
-    h6{
+    h6 {
       font-size: 14px;
       opacity: 0.4;
       color: $bl;
       text-transform: uppercase;
       margin: 0;
       font-family: $r;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         margin: 0 0 20px 0;
       }
     }
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       text-decoration: none;
-      h5{
+      h5 {
         color: $pri;
       }
     }
   }
 }
 
-.galeri-foto{
-  h2{
+.galeri-foto {
+  padding-bottom: 60px;
+  h2 {
     font-size: 44px;
     font-weight: 500;
     margin-bottom: 40px;
     float: left;
     color: $pri;
-    @media screen and (max-width: 991px){
+    @media screen and (max-width: 991px) {
       font-size: 34px;
     }
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       font-size: 30px;
       float: none;
       display: block;
       margin-bottom: 5px;
     }
   }
-  .btn-more{
+  .btn-more {
     float: right;
     margin: 10px 0 30px 0;
-    @media screen and (max-width: 767px){
+    @media screen and (max-width: 767px) {
       float: none;
     }
   }
-  .galeri-item{
+  .galeri-item {
     display: block;
     margin-bottom: 20px;
-    .small-tips{
-      background: #FADA4F;
+    .small-tips {
+      background: #fada4f;
       padding: 7px 10px;
       border-radius: 40px;
       font-weight: bold;
@@ -461,7 +468,7 @@
       top: 6px;
       color: #306037;
     }
-    .image{
+    .image {
       border-radius: 6px;
       background-size: cover;
       background-repeat: no-repeat;
@@ -470,16 +477,16 @@
       width: 100%;
       height: 180px;
       margin-bottom: 20px;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         margin-bottom: 10px;
       }
     }
-    iframe{
+    iframe {
       width: 100%;
       min-height: 220px;
       margin-bottom: 20px;
     }
-    h5{
+    h5 {
       height: 55px;
       overflow: hidden;
       font-size: 18px;
@@ -488,50 +495,51 @@
       line-height: 1.4;
       color: $bl;
       transition: all 0.3s ease;
-      @media screen and (max-width: 991px){
+      @media screen and (max-width: 991px) {
         font-size: 16px;
         height: 50px;
       }
     }
-    h6{
+    h6 {
       font-size: 14px;
       opacity: 0.4;
       color: $bl;
       text-transform: uppercase;
       margin: 0;
       font-family: $r;
-      @media screen and (max-width: 767px){
+      @media screen and (max-width: 767px) {
         margin: 0 0 20px 0;
       }
     }
-    &:hover, &:focus{
+    &:hover,
+    &:focus {
       text-decoration: none;
-      h5{
+      h5 {
         color: $pri;
       }
     }
-    &.agenda{
-      .image{
+    &.agenda {
+      .image {
         height: 122px;
         position: relative;
-        .wrap{
+        .wrap {
           position: absolute;
-          top: 0;
           left: 0;
+          right: 0;
           bottom: 0;
           background-color: $pri;
           text-align: center;
           padding: 0 10px;
           display: flex;
           align-items: center;
-          .date{
-            font-size: 40px;
+          .date {
+            font-size: 18px;
             font-weight: bold;
             color: $wt;
             margin-bottom: 0;
             display: block;
           }
-          .month{
+          .month {
             font-size: 15px;
             font-weight: bold;
             color: $wt;
@@ -541,12 +549,12 @@
           }
         }
       }
-      h5{
+      h5 {
         font-size: 18px;
         height: 51px;
         margin-bottom: 5px;
       }
-      h6{
+      h6 {
         opacity: 1;
         color: $t;
       }
@@ -554,15 +562,15 @@
   }
 }
 
-.berita-detail{
-  h3{
+.berita-detail {
+  h3 {
     display: none;
   }
-  p{
+  p {
     text-align: left !important;
   }
 }
-.btn-berita-detail{
+.btn-berita-detail {
   font-weight: bold;
   color: #3b7643;
   text-decoration: none;

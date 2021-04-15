@@ -15,7 +15,7 @@ Vue.filter('formatDateSlash', function(value) {
 
 Vue.filter('formatDay', function(value) {
     if (value) {
-        return moment(String(value)).format('DD')
+        return moment(String(value)).format('DD MMMM')
     }
 });
 

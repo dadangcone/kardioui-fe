@@ -1,82 +1,147 @@
-header{
-    border-bottom: 1px solid #E1E1E1;
-    .navbar-top{
-        background-color: $pri;
-        p{
-            float: left;
-            margin-bottom: 0;
+header {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 99;
+  background-color: $pri;
+  .navbar {
+    align-items: center;
+    padding: 0.9rem 1rem;
+    @media screen and (max-width: 1199px) {
+      padding: 1.3rem 1rem;
+    }
+    .navbar-brand {
+      img {
+        height: 70px;
+        @media screen and (max-width: 1199px) {
+          width: 150px;
+          height: auto;
+        }
+      }
+    }
+    .navbar-toggler {
+      border-color: rgba($color: $wt, $alpha: 0.8);
+    }
+    .navbar-nav {
+      .nav-item {
+        .nav-link {
+          font-weight: normal;
+          font-size: 15px;
+          color: #fff;
+          padding: 10px 10px;
+          position: relative;
+          text-transform: uppercase;
+          border-right: 1px solid rgba($color: #b4bdc8, $alpha: 0.2);
+          @media screen and (max-width: 1199px) {
+            padding: 10px 5px;
+            font-size: 13px;
+          }
+          @media screen and (max-width: 991px) {
+            padding: 5px 0px;
+            border-right: none;
+          }
+          &.nuxt-link-exact-active {
+            font-weight: bold;
+          }
+        }
+        &.dropdown {
+          &.show {
+            .dropdown-toggle {
+              background-color: $sec;
+              border-top-left-radius: 6px;
+              border-top-right-radius: 6px;
+              color: #000;
+              @media screen and (max-width: 991px) {
+                border-top-left-radius: 0px;
+                border-top-right-radius: 0px;
+              }
+            }
+          }
+          .dropdown-menu {
+            margin: -1px 0 0 -1px;
+            border-top-left-radius: 0;
+            @media screen and (max-width: 991px) {
+              border-radius: 0;
+              padding: 0;
+            }
+            .dropdown-item {
+              @media screen and (max-width: 991px) {
+                padding: 0.15rem 0.5rem;
+                font-size: 13px;
+              }
+            }
+          }
+        }
+      }
+      .btn {
+        padding: 10px 18px;
+        font-size: 13px;
+        font-weight: 600;
+        color: $pri;
+        border-radius: 12px;
+        height: 40px;
+        margin-top: 13px;
+        transition: all 0.3s ease;
+        @media screen and (max-width: 991px) {
+          margin-top: 10px;
+        }
+        &.btn-outline-primary {
+          position: relative;
+          margin-left: 30px;
+          @media screen and (max-width: 991px) {
+            margin-left: 0;
+            margin-left: 10px;
+            margin-right: 10px;
+          }
+          &:hover,
+          &:focus {
             color: $wt;
-            font-weight: 500;
-            font-size: 11px;    
-            margin-top: 11px;
-        }
-        .login{
-            float: right;
-            padding: 7px 15px;
-            background-color: $sec;
-            color: $pri;
-            img{
-                display: inline-block;
-                vertical-align: middle;
-                margin-right: 3px;
-            }
-            span{
-                display: inline-block;
-                vertical-align: middle;
-                font-size: 12px;
-                font-weight: 500;
-            }
-        }
-        &:after{
+            background-color: $pri;
+          }
+          &:after {
             content: "";
-            display: table;
-            clear: both;
-        }
-    }
-    .navbar{
-        .navbar-brand{
-            img{
-                width: 220px;
-                @media screen and (max-width: 1199px){
-                    width: 200px;
-                }
-                @media screen and (max-width: 991px){
-                    width: 170px;
-                }
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba($color: $bl, $alpha: 0.1);
+            height: 40px;
+            width: 1px;
+            @media screen and (max-width: 991px) {
+              display: none;
             }
+          }
         }
-        .navbar-nav{
-            .nav-item{
-                .nav-link{
-                    font-weight: 500;
-                    font-size: 13px;
-                    color: $t;
-                    padding: 25px 9px;
-                    position: relative;
-                    @media screen and (max-width: 1199px){
-                        padding: 25px 5px;
-                    }
-                    @media screen and (max-width: 991px){
-                        padding: 7px 0px;
-                        text-align: left;
-                    }
-                    &:before{
-                        content: "";
-                        position: absolute;
-                        height: 5px;
-                        left: 9px;
-                        right: 9px;
-                        bottom: -8px;
-                        background-color: transparent;
-                        transition: all 0.3s ease;
-                    }
-                    &.nuxt-link-exact-active, &.nuxt-link-active{
-                        &:before{
-                            background-color: $pri;
-                        }
-                    }
-                }
+        &.btn-primary {
+          color: $wt;
+          margin-left: 10px;
+          @media screen and (max-width: 991px) {
+            margin-left: 10px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+          }
+          &:hover,
+          &:focus {
+            background-color: darken($pri, 10%);
+          }
+        }
+      }
+      &.right-nav {
+        .nav-item {
+          .nav-link {
+            text-transform: unset;
+            border-right: none;
+            padding: 10px;
+            @media screen and (max-width: 991px) {
+              padding: 5px 0px;
             }
+            .search {
+              margin-top: -4px;
+            }
+          }
         }
+      }
     }
+  }
 }

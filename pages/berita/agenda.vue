@@ -11,30 +11,45 @@
                   <b-row>
                     <b-col md="12">
                       <h4 class="section-minititle">
-                        Berita seputar kardiologi
+                        Agenda
                       </h4>
                       <div class="clearfix"></div>
                       <b-row>
-                        <b-col md="4" v-for="data in dataBerita" :key="data.id">
+                        <b-col md="6" v-for="data in dataAgenda" :key="data.id">
                           <b-link
-                            :to="'/berita/' + data.slug"
-                            class="galeri-item"
+                            :to="'/agenda/' + data.slug"
+                            class="galeri-item agenda"
                           >
-                            <div
-                              class="image"
-                              :style="{
-                                backgroundImage: 'url(' + data.thumbnail + ')'
-                              }"
-                            ></div>
-                            <h5>{{ data.judul }}</h5>
-                            <h6>{{ data.created_at | formatDateSlash }}</h6>
+                            <b-row>
+                              <b-col md="5">
+                                <div
+                                  class="image"
+                                  :style="{
+                                    backgroundImage:
+                                      'url(' + data.thumbnail + ')'
+                                  }"
+                                >
+                                  <div class="wrap">
+                                    <div>
+                                      <span class="date">{{
+                                        data.created_at | formatDay
+                                      }}</span>
+                                    </div>
+                                  </div>
+                                </div>
+                              </b-col>
+                              <b-col md="7">
+                                <h5>{{ data.judul }}</h5>
+                                <h6>{{ data.penulis }}</h6>
+                              </b-col>
+                            </b-row>
                           </b-link>
                         </b-col>
                         <b-col md="12" class="text-center">
                           <b-link
-                            @click="loadBerita()"
+                            @click="loadAgenda()"
                             class="btn btn-outline-black d-inline-block mx-auto mt-5"
-                            v-if="!compare"
+                            v-if="!compare2"
                           >
                             Tampilkan lebih banyak
                             <img src="/angle-down-black.png" alt="" />
@@ -128,7 +143,7 @@ export default {
           href: "/berita"
         },
         {
-          text: "Berita",
+          text: "Agenda",
           active: true
         }
       ]
