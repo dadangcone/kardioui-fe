@@ -1,6 +1,6 @@
 <template>
   <div>
-    <HeadInner menu="Penerimaan Mahasiswa" />
+    <HeadInner menu="Penerimaan PPDS" />
 
     <div class="gray-container">
       <b-container fluid>
@@ -11,8 +11,30 @@
                 <b-col md="8">
                   <b-breadcrumb :items="items"></b-breadcrumb>
                   <div class="content-inner">
-                    <h3>{{ dataMahasiswa.judul }}</h3>
-                    <vue-markdown>{{ dataMahasiswa.konten }}</vue-markdown>
+                    <h3 class="mb-5">Updates PPDS</h3>
+                    <b-row>
+                      <div
+                        class="col-md-6"
+                        v-for="updatesPPDS in dataUpdatePPDS"
+                        :key="updatesPPDS.id"
+                      >
+                        <a
+                          v-bind:href="updatesPPDS.url_file"
+                          target="_blank"
+                          class="item-list"
+                        >
+                          <div class="icon desc">
+                            <img src="/pdf.png" alt="" />
+                          </div>
+                          <h5>
+                            {{ updatesPPDS.judul }}
+                          </h5>
+                          <h6 class="desc">
+                            {{ updatesPPDS.deskripsi }}
+                          </h6>
+                        </a>
+                      </div>
+                    </b-row>
                   </div>
                 </b-col>
                 <b-col md="4">
@@ -32,19 +54,19 @@ export default {
   head() {
     return {
       title:
-        "Penerimaan Mahasiswa | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
+        "Penerimaan PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
       meta: [
         {
           hid: "title",
           name: "title",
           content:
-            "Penerimaan Mahasiswa | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
+            "Penerimaan PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
         },
         {
           hid: "og:title",
           name: "og:title",
           content:
-            "Penerimaan Mahasiswa | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
+            "Penerimaan PPDS | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
         },
         {
           hid: "keywords",
@@ -68,8 +90,8 @@ export default {
     };
   },
   async asyncData({ route, app }) {
-    let tempMahasiswa = await app.$axios.$get(`/penerimaan-mahasiswa`);
-    return { dataMahasiswa: tempMahasiswa.data[0] };
+    let tempUpdatePPDS = await app.$axios.$get(`/pengumuman-penerimaan-ppds`);
+    return { dataUpdatePPDS: tempUpdatePPDS.data.data };
   },
   data() {
     return {
@@ -83,7 +105,7 @@ export default {
           href: "/penerimaan"
         },
         {
-          text: "Mahasiswa",
+          text: "Update PPDS",
           active: true
         }
       ]

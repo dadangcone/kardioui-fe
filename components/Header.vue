@@ -24,15 +24,15 @@
               >Akreditasi & Penghaargaan</b-dropdown-item
             >
           </b-nav-item-dropdown>
-          <b-nav-item-dropdown text="Penerimaan">
-            <b-dropdown-item to="/penerimaan">PPDS</b-dropdown-item>
-            <b-dropdown-item to="/penerimaan/updates-ppds"
+          <b-nav-item-dropdown text="Pendidikan">
+            <b-dropdown-item to="/pendidikan">PPDS</b-dropdown-item>
+            <b-dropdown-item to="/pendidikan/updates-ppds"
               >Updates PPDS</b-dropdown-item
             >
-            <b-dropdown-item to="/penerimaan/mahasiswa"
+            <b-dropdown-item to="/pendidikan/mahasiswa"
               >Mahasiswa</b-dropdown-item
             >
-            <b-dropdown-item to="/penerimaan/fasilitas"
+            <b-dropdown-item to="/pendidikan/fasilitas"
               >Fasilitas</b-dropdown-item
             >
           </b-nav-item-dropdown>
@@ -54,9 +54,34 @@
           <b-nav-item to="/publikasi">Publikasi</b-nav-item>
           <b-nav-item to="/berita">Berita & Agenda</b-nav-item>
           <b-nav-item to="">Member</b-nav-item>
+          <li class="nav-item lang">
+            <b-link @click="switchLang('id')" target="_self">ID</b-link>
+            <b-link @click="switchLang('en')" target="_self">EN</b-link>
+          </li>
           <b-nav-item to="/search"><img src="/search.png" alt=""/></b-nav-item>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
   </header>
 </template>
+
+<script>
+import _ from "lodash";
+
+export default {
+  data() {
+    return {};
+  },
+  mounted() {},
+  methods: {
+    async switchLang(value) {
+      if (value === "id") {
+        await this.$axios.$get(`/language/ind`);
+      } else {
+        await this.$axios.$get(`/language/en`);
+      }
+      location.reload();
+    }
+  }
+};
+</script>

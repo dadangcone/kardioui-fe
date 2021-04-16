@@ -81,7 +81,7 @@ export default {
     };
   },
   async asyncData({ route, app }) {
-    let tempFasilitas = await app.$axios.$get(`/penerimaan-fasilitas`);
+    let tempFasilitas = await app.$axios.$get(`/pendidikan-fasilitas`);
     return { dataFasilitas: tempFasilitas.data[0] };
   },
   data() {

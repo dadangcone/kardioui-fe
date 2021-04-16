@@ -68,7 +68,7 @@ export default {
     };
   },
   async asyncData({ route, app }) {
-    let tempPPDS = await app.$axios.$get(`/penerimaan-ppds`);
+    let tempPPDS = await app.$axios.$get(`/info-penerimaan`);
     return { dataPPDS: tempPPDS.data[0] };
   },
   data() {

@@ -691,12 +691,12 @@
       font-weight: bold;
       margin-bottom: 10px;
       color: $bl;
-      height: 42px;
+      max-height: 42px;
       overflow: hidden;
       text-transform: uppercase;
       @media screen and (max-width: 767px) {
         font-size: 16px;
-        height: 40px;
+        max-height: 40px;
       }
     }
     p {
@@ -704,11 +704,15 @@
       opacity: 0.6;
       color: $bl;
       margin-bottom: 0;
-      height: 45px;
+      max-height: 45px;
       overflow: hidden;
       @media screen and (max-width: 767px) {
         font-size: 14px;
       }
+    }
+    &:hover,
+    &:focus {
+      text-decoration: none;
     }
   }
 }
