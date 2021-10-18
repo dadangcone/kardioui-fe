@@ -12,7 +12,7 @@
                   <b-breadcrumb :items="items"></b-breadcrumb>
                   <div class="content-inner">
                     <h3>{{ dataPPDS.judul }}</h3>
-                    <vue-markdown>{{ dataPPDS.konten }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataPPDS.konten }}</vue-markdown>
                   </div>
                 </b-col>
                 <b-col md="4">

@@ -16,7 +16,7 @@
                       <b-col md="12" v-for="data in dataKP" :key="data.id">
                         <h5>{{ data.judul }}</h5>
                         <h6>
-                          <vue-markdown>{{ data.konten }}</vue-markdown>
+                          <vue-markdown class="markdown">{{ data.konten }}</vue-markdown>
                         </h6>
                       </b-col>
                     </b-row>
@@ -57,7 +57,7 @@
               <b-col md="6" v-for="data in dataKP" :key="data.id">
                 <div class="kp-wrap">
                   <h5>{{ data.judul }}</h5>
-                  <h6> <vue-markdown>{{ data.konten }}</vue-markdown></h6>
+                  <h6> <vue-markdown class="markdown">{{ data.konten }}</vue-markdown></h6>
                 </div>
               </b-col>
               <b-col md="12" class="text-center">

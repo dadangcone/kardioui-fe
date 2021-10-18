@@ -75,7 +75,7 @@
               <b-col md="12" v-if="dataInfoPenerimaan">
                 <h2>{{ dataInfoPenerimaan[0].judul }}</h2>
                 <div class="clearfix"></div>
-                <vue-markdown>{{ dataInfoPenerimaan[0].konten }}</vue-markdown>
+                <vue-markdown class="markdown">{{ dataInfoPenerimaan[0].konten }}</vue-markdown>
                 <!-- <b-link to="/berita" class="btn-more">All News</b-link>
                 <div class="clearfix"></div>
                 <VueSlickCarousel v-bind="newsSettings" class="carousel-news">

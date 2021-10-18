@@ -27,7 +27,7 @@
                       </b-col>
                     </b-row>
 
-                    <vue-markdown>{{ dataPenelitian.konten }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataPenelitian.konten }}</vue-markdown>
                   </div>
                 </b-col>
                 <b-col md="4">

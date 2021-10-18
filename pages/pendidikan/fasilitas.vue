@@ -25,7 +25,7 @@
                       </b-col>
                     </b-row>
 
-                    <vue-markdown>{{ dataFasilitas.konten }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataFasilitas.konten }}</vue-markdown>
                   </div>
                 </b-col>
                 <b-col md="4">

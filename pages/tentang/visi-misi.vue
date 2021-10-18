@@ -12,9 +12,9 @@
                   <b-breadcrumb :items="items"></b-breadcrumb>
                   <div class="content-inner">
                     <h3>Visi</h3>
-                    <vue-markdown>{{ dataVM.visi }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataVM.visi }}</vue-markdown>
                     <h3>Misi</h3>
-                    <vue-markdown>{{ dataVM.misi }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataVM.misi }}</vue-markdown>
                     <!-- <p>1. Menyelenggarakan pendidikan yang didukung pengembangan riset sehingga mampu melaksanakan pelayanan kesehatan sesuai standar profesi dan iptekdokes.<br><br>
 
                     2. Menyelenggarakan pendidikan dengan mengembangkan organisasi dan manajemen yang berorientasi pada kualitas,otonomi,akuntanbilitas,dan akreditasi.<br><br>

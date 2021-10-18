@@ -16,7 +16,7 @@
                   <div class="content-inner">
                     <h3>{{ dataDetail.judul }}</h3>
                     <h6>{{ dataDetail.publish_date | formatDateSlash }}</h6>
-                    <vue-markdown>{{ dataDetail.konten }}</vue-markdown>
+                    <vue-markdown class="markdown">{{ dataDetail.konten }}</vue-markdown>
                     <div class="clearfix"></div>
                     <b-link class="btn-berita-detail" to="/berita"
                       >Back to berita & agenda</b-link
