@@ -16,7 +16,7 @@
                       <b-col md="12">
                         <b-form-input
                           type="search"
-                          class="search-list left big d-none"
+                          class="search-list left big"
                           v-model="search"
                           placeholder="Cari staf pengajar dan bidangnya"
                           v-on:keyup.enter="searchStaff"
