@@ -44,7 +44,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -61,7 +61,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -78,7 +78,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -93,7 +93,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -111,7 +111,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -128,7 +128,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -143,7 +143,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <b-col cols="12">
@@ -160,7 +160,7 @@
                           >
                             <div class="staf-wrap">
                               <h3>{{ data.nama_pengajar }}</h3>
-                              <h6>{{ data.divisi }}</h6>
+                              <!-- <h6>{{ data.divisi }}</h6> -->
                             </div>
                           </b-col>
                           <!-- <b-col md="12" class="text-center">
