@@ -16,7 +16,7 @@
                       <b-col md="12">
                         <b-form-input
                           type="search"
-                          class="search-list left big"
+                          class="search-list left big d-none"
                           v-model="search"
                           placeholder="Cari staf pengajar dan bidangnya"
                           v-on:keyup.enter="searchStaff"
@@ -34,9 +34,12 @@
                         </div>
                         <div class="clearfix"></div>
                         <b-row>
+                          <b-col cols="12">
+                            <h5 class="mb-3">Aritmia</h5></b-col
+                          >
                           <b-col
                             md="6"
-                            v-for="data in dataStaff"
+                            v-for="data in dataStaff.Aritmia"
                             :key="data.id"
                           >
                             <div class="staf-wrap">
@@ -44,7 +47,123 @@
                               <h6>{{ data.divisi }}</h6>
                             </div>
                           </b-col>
-                          <b-col md="12" class="text-center">
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kardiologi Intensif dan Kegawatan Kardiovaskular
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff[
+                              'Kardiologi Intensif dan Kegawatan Kardiovaskular'
+                            ]"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kardiologi Invasif dan Intervensi Non bedah
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff[
+                              'Kardiologi Invasif dan Intervensi Non bedah'
+                            ]"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kardiologi Klinik
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff['Kardiologi Klinik']"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kardiologi Non-Invasif Ekokardiografi dan
+                              Treadmill
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff[
+                              'Kardiologi Non-Invasif Ekokardiografi dan Treadmill'
+                            ]"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kardiologi Pediatrik dan Penyakit Jantung Bawaan
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff[
+                              'Kardiologi Pediatrik dan Penyakit Jantung Bawaan'
+                            ]"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Kedokteran Vaskular
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff['Kedokteran Vaskular']"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <b-col cols="12">
+                            <h5 class="mb-3 mt-3">
+                              Prevensi dan Rehabilitasi Kardiovaskular
+                            </h5></b-col
+                          >
+                          <b-col
+                            md="6"
+                            v-for="data in dataStaff[
+                              'Prevensi dan Rehabilitasi Kardiovaskular'
+                            ]"
+                            :key="data.id"
+                          >
+                            <div class="staf-wrap">
+                              <h3>{{ data.nama_pengajar }}</h3>
+                              <h6>{{ data.divisi }}</h6>
+                            </div>
+                          </b-col>
+                          <!-- <b-col md="12" class="text-center">
                             <b-link
                               @click="loadStaff()"
                               class="btn btn-outline-black d-inline-block mx-auto mt-5"
@@ -53,7 +172,7 @@
                               Tampilkan lebih banyak
                               <img src="/angle-down-black.png" alt="" />
                             </b-link>
-                          </b-col>
+                          </b-col> -->
                         </b-row>
                       </b-col>
                     </b-row>
@@ -117,7 +236,7 @@ export default {
       search: "",
       current_page: 1,
       last_page: 0,
-      dataStaff: [],
+      dataStaff: {},
       items: [
         {
           text: "Beranda",
@@ -145,14 +264,16 @@ export default {
   methods: {
     async getStaff() {
       let tempStaff = await this.$axios.$get(
-        `/staff-pengajar?search=` +
+        `/staff-pengajar-new?search=` +
           this.search.toLowerCase() +
           "&page=" +
           this.current_page
       );
 
-      this.dataStaff.push.apply(this.dataStaff, tempStaff.data.data);
-      this.last_page = tempStaff.data.last_page;
+      // this.dataStaff.push.apply(this.dataStaff, tempStaff.data.data);
+      // this.last_page = tempStaff.data.last_page;
+
+      this.dataStaff = tempStaff.data;
     },
     async loadStaff() {
       this.current_page += 1;
