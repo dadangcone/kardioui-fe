@@ -63,7 +63,7 @@
     padding: 12px 12px 12px 42px;
     border-radius: 8px;
     border: 1px solid #f2f2f2;
-    background-image: url("/search.png");
+    background-image: url("/search-gray.png");
     background-repeat: no-repeat;
     background-position: left 12px center;
     @media screen and (max-width: 767px) {
@@ -78,6 +78,9 @@
     }
     &.big {
       width: 350px;
+      @media screen and (max-width: 767px) {
+        width: 100%;
+      }
     }
   }
   .sort {
