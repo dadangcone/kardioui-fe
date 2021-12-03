@@ -21,7 +21,7 @@
             <b-dropdown-item to="/tentang/alumni">Alumni</b-dropdown-item>
             <b-dropdown-item to="/tentang/ppds">PPDS</b-dropdown-item>
             <b-dropdown-item to="/tentang/akreditasi"
-              >Akreditasi & Penghaargaan</b-dropdown-item
+              >Akreditasi & Penghargaan</b-dropdown-item
             >
           </b-nav-item-dropdown>
           <b-nav-item-dropdown text="Pendidikan">

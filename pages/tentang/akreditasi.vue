@@ -11,7 +11,7 @@
                 <b-col md="8">
                   <b-breadcrumb :items="items"></b-breadcrumb>
                   <div class="content-inner">
-                    <h3>Akreditasi & Pengharagaan</h3>
+                    <h3>Akreditasi & Penghargaan</h3>
                     <b-row>
                       <b-col md="12">
                         <b-form-input

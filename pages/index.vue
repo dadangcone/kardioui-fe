@@ -15,12 +15,12 @@
             <div class="text-hero" v-for="item in dataBanner" :key="item.id">
               <div class="wrap">
                 <h2 class="mb-2">{{ item.title }}</h2>
-                <b-link
+                <!-- <b-link
                   v-bind:href="item.url"
                   class="btn btn-outline-white"
                   target="_blank"
                   >Selengkapnya <img src="/angle-right.png" alt=""
-                /></b-link>
+                /></b-link> -->
               </div>
             </div>
           </div>
@@ -121,7 +121,7 @@
     <div class="discover-wrap">
       <b-container fluid>
         <b-row>
-          <b-col md="4">
+          <!-- <b-col md="4">
             <div class="study" v-if="dataPenelitian">
               <h5>Studying at kardiologi UI</h5>
               <div
@@ -133,8 +133,8 @@
                 <p>{{ item.kategori }}</p>
               </div>
             </div>
-          </b-col>
-          <b-col md="8">
+          </b-col> -->
+          <b-col md="12">
             <h4 class="title-discover">Latest News</h4>
             <b-row>
               <b-col md="4" v-for="item in dataBerita" :key="item.id">
