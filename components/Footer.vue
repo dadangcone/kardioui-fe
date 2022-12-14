@@ -8,8 +8,8 @@
           </b-col>
           <b-col md="3">
             <h5>Email</h5>
-            <b-link href="mailto:sekretariat@kardiologi-ui.com" class="kontak">
-              sekretariat@kardiologi-ui.com
+            <b-link href="mailto:sekretariat@kardiologiui.com" class="kontak">
+              sekretariat@kardiologiui.com
             </b-link>
           </b-col>
           <b-col md="2">
