@@ -11,8 +11,8 @@
                 <b-col md="12">
                   <b-breadcrumb :items="items"></b-breadcrumb>
                   <div class="content-inner">
-                    <h3>{{ dataPM.judul }}</h3>
-                    <vue-markdown class="markdown">{{ dataPM.deskripsi }}</vue-markdown>
+                    <h3>{{ dataPM ? dataPM.judul : null }}</h3>
+                    <vue-markdown class="markdown">{{  dataPM ? dataPM.deskripsi : null }}</vue-markdown>
                   </div>
                 </b-col>
               </b-row>
@@ -66,7 +66,7 @@ export default {
   },
   async asyncData({ route, app }) {
     let tempPM = await app.$axios.$get(`/pelayanan-masyarakat`);
-    return { dataPM: tempPM.data[0] };
+    return { dataPM: tempPM.data.data[0] };
   },
   data() {
     return {
