@@ -29,17 +29,17 @@
                     <div class="clearfix"></div>
                     <b-row>
                       <b-col md="6" v-for="item in dataBuku" :key="item.id">
-                        <b-link to="" class="item-list">
+                        <a :href="item.url_file_buku" class="item-list" target="_blank">
                           <div :class="['icon', 'desc']">
                             <img src="/pdf.png" alt="" />
                           </div>
-
+                        
                           <h5>{{ item.judul }}</h5>
                           <h6 class="desc">{{ item.deskripsi }}</h6>
                           <span class="size d-none">{{
                             item.created_at | formatDateSlash
                           }}</span>
-                        </b-link>
+                        </a>
                       </b-col>
                     </b-row>
                     <b-row>
