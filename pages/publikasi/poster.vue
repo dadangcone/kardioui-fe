@@ -29,8 +29,8 @@
                     <div class="clearfix"></div>
                     <b-row>
                       <b-col md="6" v-for="item in dataPoster" :key="item.id">
-                        <b-link
-                          :href="item.link_file_poster"
+                        <a
+                          :href="item.url_file_poster"
                           target="_blank"
                           class="item-list"
                         >
@@ -43,7 +43,7 @@
                           <span class="size d-none">{{
                             item.created_at | formatDateSlash
                           }}</span>
-                        </b-link>
+                        </a>
                       </b-col>
                     </b-row>
                     <b-row>

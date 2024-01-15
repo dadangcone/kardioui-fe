@@ -29,15 +29,15 @@
                     <div class="clearfix"></div>
                     <b-row>
                       <b-col md="6" v-for="item in dataJurnal" :key="item.id">
-                        <b-link to="" class="item-list">
+                        <a :href="item.url_file_jurnal" class="item-list" target="_blank">
                           <div :class="['icon', 'desc']">
                             <img src="/pdf.png" alt="" />
                           </div>
 
-                          <h5>{{ item.judul }}</h5>
-                          <h6 class="desc">{{ item.peneliti }}</h6>
-                          <span class="size d-none">{{ item.peneliti }}</span>
-                        </b-link>
+                          <h5>{{ item.title }}</h5>
+                          <h6 class="desc">{{ item.publisher }}</h6>
+                          <span class="size d-none">{{ item.publisher }}</span>
+                        </a>
                       </b-col>
                     </b-row>
                     <b-row>
