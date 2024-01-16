@@ -28,7 +28,7 @@
                     </div>
                     <div class="clearfix"></div>
                     <b-row>
-                      <b-col md="3" v-for="item in dataJurnal" :key="item.id">
+                      <b-col md="3" class="mb-4" v-for="item in dataJurnal" :key="item.id">
                         <a
                           :href="item.url_file_jurnal"
                           target="_blank"
