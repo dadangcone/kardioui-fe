@@ -28,24 +28,29 @@
                     </div>
                     <div class="clearfix"></div>
                     <b-row>
-                      <b-col md="6" v-for="item in dataPoster" :key="item.id">
+                      <b-col md="3" v-for="item in dataPoster" :key="item.id">
                         <a
                           :href="item.url_file_poster"
                           target="_blank"
-                          class="item-list"
+                          class="card-link"
                         >
-                          <div :class="['icon', 'desc']">
-                            <img src="/pdf.png" alt="" />
-                          </div>
-
-                          <h5>{{ item.judul_poster }}</h5>
-                          <h6 class="desc">{{ item.nama_peneliti }}</h6>
-                          <span class="size d-none">{{
-                            item.created_at | formatDateSlash
-                          }}</span>
+                          <b-card
+                            :img-src="item.url_foto_peneliti"
+                            :img-alt="item.judul"
+                            img-top
+                            tag="article"
+                            style="max-width: 20rem;"
+                            class="mb-2 card-image"
+                            :title="item.judul_poster"
+                          >
+                            <b-card-text>
+                              {{ item.nama_peneliti }}
+                            </b-card-text>
+                          </b-card>
                         </a>
                       </b-col>
                     </b-row>
+                   
                     <b-row>
                       <b-col class="text-center">
                         <b-link
@@ -315,3 +320,29 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.card-link {
+  &:hover {
+    text-decoration: none;
+  }
+  .card-image {
+    .card-title {
+      color: #3b7543;
+    }
+  }
+}
+.card-image {
+  height: 100%;
+  img {
+    object-fit: cover;
+    height: 306px;
+  }
+  .card-title {
+    font-size: 18px;
+  }
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 0 !important;
+  }
+}
+</style>

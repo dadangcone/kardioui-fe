@@ -22,23 +22,31 @@
                     <div class="sort d-none">
                       <label for="">Urut berdasarkan</label>
                       <b-form-select v-model="sort">
-                        <option value="desc">Z- A</option>
+                        <option value="desc">Z - A</option>
                         <option value="asc">A - Z</option>
                       </b-form-select>
                     </div>
                     <div class="clearfix"></div>
                     <b-row>
-                      <b-col md="6" v-for="item in dataBuku" :key="item.id">
-                        <a :href="item.url_file_buku" class="item-list" target="_blank">
-                          <div :class="['icon', 'desc']">
-                            <img src="/pdf.png" alt="" />
-                          </div>
-                        
-                          <h5>{{ item.judul }}</h5>
-                          <h6 class="desc">{{ item.deskripsi }}</h6>
-                          <span class="size d-none">{{
-                            item.created_at | formatDateSlash
-                          }}</span>
+                      <b-col md="3" v-for="item in dataBuku" :key="item.id">
+                        <a
+                          :href="item.url_file_buku"
+                          target="_blank"
+                          class="card-link"
+                        >
+                          <b-card
+                            :img-src="item.url_thumbnail"
+                            :img-alt="item.judul"
+                            img-top
+                            tag="article"
+                            style="max-width: 20rem;"
+                            class="mb-2 card-image"
+                            :title="item.judul"
+                          >
+                            <b-card-text>
+                              {{ item.deskripsi }}
+                            </b-card-text>
+                          </b-card>
                         </a>
                       </b-col>
                     </b-row>
@@ -81,33 +89,33 @@ export default {
           hid: "title",
           name: "title",
           content:
-            "Publikasi Buku | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
+            "Publikasi Buku | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
         },
         {
           hid: "og:title",
           name: "og:title",
           content:
-            "Publikasi Buku | Departemen Kardiologi dan Kedokteran Vaskular FK UI"
+            "Publikasi Buku | Departemen Kardiologi dan Kedokteran Vaskular FK UI",
         },
         {
           hid: "keywords",
           name: "keywords",
           content:
-            "Yayasan, Universitas Indonesia, Kardiologi, Indonesia, Vaskular, Departemen Kardiologi, Kedokteran Vaskular, Departemen Kardiologi dan Kedokteran Vaskular FK UI"
+            "Yayasan, Universitas Indonesia, Kardiologi, Indonesia, Vaskular, Departemen Kardiologi, Kedokteran Vaskular, Departemen Kardiologi dan Kedokteran Vaskular FK UI",
         },
         {
           hid: "description",
           name: "description",
           content:
-            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular"
+            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular",
         },
         {
           hid: "og:description",
           name: "og:description",
           content:
-            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular"
-        }
-      ]
+            "Departemen Kardiologi dan Kedokteran Vaskular FK UI menyelenggarakan Program Spesialis Kardiovaskular dan mengembangkan penelitian di bidang kardiovaskular",
+        },
+      ],
     };
   },
   data() {
@@ -124,7 +132,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 2,
@@ -132,7 +140,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 3,
@@ -140,7 +148,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 4,
@@ -148,7 +156,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 5,
@@ -156,7 +164,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 6,
@@ -164,7 +172,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 7,
@@ -172,7 +180,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 8,
@@ -180,7 +188,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 9,
@@ -188,7 +196,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 10,
@@ -196,7 +204,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 11,
@@ -204,7 +212,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 12,
@@ -212,7 +220,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 13,
@@ -220,7 +228,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 14,
@@ -228,7 +236,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
+          icon: "/doc.png",
         },
         {
           id: 15,
@@ -236,7 +244,7 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/pdf.png"
+          icon: "/pdf.png",
         },
         {
           id: 16,
@@ -244,23 +252,23 @@ export default {
           size: "1.2 mb",
           desc:
             "Deskripsi singkat disini berbentuk text area dapet berisi maksimal 2 line saja",
-          icon: "/doc.png"
-        }
+          icon: "/doc.png",
+        },
       ],
       items: [
         {
           text: "Beranda",
-          href: "/"
+          href: "/",
         },
         {
           text: "Publikasi",
-          href: "/publikasi"
+          href: "/publikasi",
         },
         {
           text: "Buku",
-          active: true
-        }
-      ]
+          active: true,
+        },
+      ],
     };
   },
   mounted() {
@@ -269,7 +277,7 @@ export default {
   computed: {
     compare() {
       return this.current_page >= this.last_page;
-    }
+    },
   },
   methods: {
     async getBuku() {
@@ -307,7 +315,34 @@ export default {
 
       this.dataBuku.push.apply(this.dataBuku, tempBuku.data.data);
       this.last_page = tempBuku.data.last_page;
-    }
-  }
+    },
+  },
 };
 </script>
+
+<style lang="scss">
+.card-link {
+  &:hover {
+    text-decoration: none;
+  }
+  .card-image {
+    .card-title {
+      color: #3b7543;
+    }
+  }
+}
+.card-image {
+  height: 100%;
+  img {
+    object-fit: cover;
+    height: 306px;
+  }
+  .card-title {
+    font-size: 18px;
+  }
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 0 !important;
+  }
+}
+</style>

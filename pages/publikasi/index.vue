@@ -28,15 +28,25 @@
                     </div>
                     <div class="clearfix"></div>
                     <b-row>
-                      <b-col md="6" v-for="item in dataJurnal" :key="item.id">
-                        <a :href="item.url_file_jurnal" class="item-list" target="_blank">
-                          <div :class="['icon', 'desc']">
-                            <img src="/pdf.png" alt="" />
-                          </div>
-
-                          <h5>{{ item.title }}</h5>
-                          <h6 class="desc">{{ item.publisher }}</h6>
-                          <span class="size d-none">{{ item.publisher }}</span>
+                      <b-col md="3" v-for="item in dataJurnal" :key="item.id">
+                        <a
+                          :href="item.url_file_jurnal"
+                          target="_blank"
+                          class="card-link"
+                        >
+                          <b-card
+                            :img-src="item.url_thumbnail"
+                            :img-alt="item.judul"
+                            img-top
+                            tag="article"
+                            style="max-width: 20rem;"
+                            class="mb-2 card-image"
+                            :title="item.title"
+                          >
+                            <b-card-text>
+                              {{ item.publisher }}
+                            </b-card-text>
+                          </b-card>
                         </a>
                       </b-col>
                     </b-row>
@@ -179,3 +189,30 @@ export default {
   }
 };
 </script>
+
+<style lang="scss">
+.card-link {
+  &:hover {
+    text-decoration: none;
+  }
+  .card-image {
+    .card-title {
+      color: #3b7543;
+    }
+  }
+}
+.card-image {
+  height: 100%;
+  img {
+    object-fit: cover;
+    height: 306px;
+  }
+  .card-title {
+    font-size: 18px;
+  }
+  .card-text {
+    font-size: 14px;
+    margin-bottom: 0 !important;
+  }
+}
+</style>
